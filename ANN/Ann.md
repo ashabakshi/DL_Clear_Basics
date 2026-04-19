@@ -1,4 +1,4 @@
-# DL_Clear_Basics
+# Neuron & Perceptron
 
 🔹 What is a Neuron?
 
@@ -124,3 +124,11 @@ Think of it like this: you're blindfolded on a hilly surface. You want to reach 
                 Step 4: Update weights    ← optimizer fixes w and b
                 ↓
                 Repeat 1000s of times → network learns!
+
+# ANN - Artificial Neural Network
+
+ANN - is same as perceptron but with multiple layers like
+
+Input Layer → Hidden Layer → Output Layer
+
+![alt text](ann_forward_propagation.svg)
