@@ -208,8 +208,8 @@ Step 2 — sigmoid:
                 a = 1 / (1 + e⁻⁰·³²)
 
                 a = 1 / (1 + 0.726)
-                
+
                 a ≈ 0.579
 
 So this neuron outputs 0.579 → passes that to the next layer.
-![alt text](ann_forward_propagation-1.svg)
+![alt text](hidden_neuron_internals.svg)
