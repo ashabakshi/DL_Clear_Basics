@@ -254,8 +254,11 @@ That's it. The chain rule just tells you how to combine derivatives of nested fu
                 "If A affects B, and B affects C — then how much does A affect C?"
 
    In our network:
-             weights → z → a → Loss
+
+                weights → z → a → Loss
+
    So to know how much a weight affects Loss, we multiply the small effects together:
+
 
                 ∂Loss/∂w  =  ∂Loss/∂a  ×  ∂a/∂z  ×  ∂z/∂w
 
@@ -266,21 +269,24 @@ The 4 Steps of Backprop:
         Step 1 — Compute the loss
                 Loss = actual - predicted = y - ŷ
 
+
         Step 2 — Gradient at output layer
-        How much did the output neuron contribute to the loss?
-                ∂Loss/∂ŷ  =  ŷ - y
+                How much did the output neuron contribute to the loss?
+                        ∂Loss/∂ŷ  =  ŷ - y
+
 
         Step 3 — Propagate backwards through sigmoid
-        Sigmoid has a neat derivative:
-                σ'(z) = a × (1 - a)
-        So:
-                ∂Loss/∂z  =  (ŷ - y) × a × (1 - a)
+                        Sigmoid has a neat derivative:
+                        σ'(z) = a × (1 - a)
+                So:
+                        ∂Loss/∂z  =  (ŷ - y) × a × (1 - a)
+
 
         Step 4 — Update the weights
-        Finally, using gradient descent:
-                w_new = w_old - α × ∂Loss/∂w
+                        Finally, using gradient descent:
+                        w_new = w_old - α × ∂Loss/∂w
 
-        This is done for every single weight in the network, moving backwards from output → hidden → input.
+This is done for every single weight in the network, moving backwards from output → hidden → input.
 
 ![alt text](backprop_flow.svg)   
 
@@ -297,6 +303,7 @@ The 4 Steps of Backprop:
                         network learns! ✅                
 
 One Analogy to lock it in 🎯
+
 Think of a student taking a test:
 
                 * Forward prop = student attempts all answers
