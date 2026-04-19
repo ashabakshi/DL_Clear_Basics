@@ -187,8 +187,11 @@ Numerical example:
 
 Let's say:
                 x₁ = 0.5,  w₁ = 0.8
+
                 x₂ = 1.0,  w₂ = -0.3
+
                 x₃ = 0.2,  w₃ = 0.6
+
                 b  = 0.1
 
 Step 1 — weighted sum:
