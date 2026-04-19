@@ -1,5 +1,18 @@
 # DL_Clear_Basics
 
+🔹 What is a Neuron?
+        Think of your brain — it has billions of biological neurons that receive signals, process them, and send output to other neurons.
+        An artificial neuron mimics exactly this:
+
+            Inputs (x) → like signals coming in
+            Weights (w) → how important each input is
+            Bias (b) → a constant that shifts the result
+            Activation function → decides whether the neuron "fires" or not
+            Output → the final result passed forward
+
+![alt text](image.png)
+
+
 
 Perceptron: 
          A Perceptron is the simplest form of a neural network — just one neuron, making a yes/no decision.
