@@ -1,8 +1,9 @@
 # DL_Clear_Basics
 
 🔹 What is a Neuron?
-        Think of your brain — it has billions of biological neurons that receive signals, process them, and send output to other neurons.
-        An artificial neuron mimics exactly this:
+
+    Think of your brain — it has billions of biological neurons that receive signals, process them, and send output to other neurons.
+    An artificial neuron mimics exactly this:
 
             Inputs (x) → like signals coming in
             Weights (w) → how important each input is
@@ -15,6 +16,7 @@
 
 
 Perceptron: 
+
          A Perceptron is the simplest form of a neural network — just one neuron, making a yes/no decision.
         It was invented in 1958 by Frank Rosenblatt.
         How it works:
