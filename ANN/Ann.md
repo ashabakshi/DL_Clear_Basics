@@ -151,7 +151,7 @@ The output a of one layer becomes the input x of the next layer. That's it. Repe
 
 Step-by-step 
 
-Forward Propagation
+# Forward Propagation
 
         Step 1 — Input layer
                  Raw data enters. No calculation here. x₁, x₂, x₃ are just your features — like age, salary, height — whatever your dataset has.
@@ -222,3 +222,64 @@ One key thing to remember:
                 a = σ(z) — activation
 
                 Pass a forward to next layer
+
+# Backward Propagation
+
+Forward prop makes a prediction. Backprop looks at how wrong it was, and fixes the weights — going backwards, layer by layer.
+
+
+Why do we need it?
+
+                After forward prop, we have:
+
+                * ŷ = what the network predicted
+                * y = actual correct answer
+                * Loss = how wrong the prediction was
+
+Now the question is — which weights caused this loss? And by how much should we change each weight?
+
+Backprop answers exactly this using something called the chain rule from calculus.
+
+The Chain Rule:
+
+                If you have a function y = f(z) and z = g(x),
+                then the derivative of y with respect to x is:
+
+                dy/dx = dy/dz × dz/dx
+
+That's it. The chain rule just tells you how to combine derivatives of nested functions.
+
+        You just need the intuition. Chain rule says:
+
+                "If A affects B, and B affects C — then how much does A affect C?"
+
+   In our network:
+             weights → z → a → Loss
+   So to know how much a weight affects Loss, we multiply the small effects together:
+
+                ∂Loss/∂w  =  ∂Loss/∂a  ×  ∂a/∂z  ×  ∂z/∂w
+
+Each ∂ just means "a tiny change in." Read it as: "how does Loss change when we wiggle w"
+
+The 4 Steps of Backprop:
+
+        Step 1 — Compute the loss
+                Loss = actual - predicted = y - ŷ
+
+        Step 2 — Gradient at output layer
+        How much did the output neuron contribute to the loss?
+                ∂Loss/∂ŷ  =  ŷ - y
+
+        Step 3 — Propagate backwards through sigmoid
+        Sigmoid has a neat derivative:
+                σ'(z) = a × (1 - a)
+        So:
+                ∂Loss/∂z  =  (ŷ - y) × a × (1 - a)
+
+        Step 4 — Update the weights
+        Finally, using gradient descent:
+                w_new = w_old - α × ∂Loss/∂w
+
+        This is done for every single weight in the network, moving backwards from output → hidden → input.
+
+        
