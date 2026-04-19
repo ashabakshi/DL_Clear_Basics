@@ -65,7 +65,9 @@ Step 2 — Sigmoid (Activation Function)
 
 The output z from step 1 can be any number — like 500, -300, 2.7 — anything.
 Sigmoid squishes that number into a range between 0 and 1.
-σ(z) = 1 / (1 + e⁻ᶻ)
+
+
+        σ(z) = 1 / (1 + e⁻ᶻ)
 
         If z is very large → sigmoid ≈ 1
         If z is very small (negative) → sigmoid ≈ 0
@@ -77,8 +79,11 @@ Why do we need this?
 Step 3 — Loss Function
 
 Now the network made a prediction (output from sigmoid). But is it correct?
+
 Loss function measures how wrong the prediction is.
+
 Most common one for classification — Binary Cross Entropy:
+
         Loss = -[ y·log(ŷ) + (1-y)·log(1-ŷ) ]
 
         y → actual answer (0 or 1)
@@ -102,8 +107,20 @@ That's the optimizer's job. Most common one → Gradient Descent.
 
 Line by line:
 
-        ∂Loss/∂w → gradient (tells us: if we increase w a little, does loss go up or down?)
-        α (alpha) → learning rate — how big a step we take (too big = overshoot, too small = too slow)
-        w = w - ... → we update the weight in the direction that reduces loss
+       * ∂Loss/∂w → gradient (tells us: if we increase w a little, does loss go up or down?)
+       * α (alpha) → learning rate — how big a step we take (too big = overshoot, too small = too slow)
+       * w = w - ... → we update the weight in the direction that reduces loss
 
 Think of it like this: you're blindfolded on a hilly surface. You want to reach the lowest point (minimum loss). Gradient descent tells you — "take one step downhill." You keep doing this until you reach the bottom.
+
+                Input data
+                ↓
+                Step 1: z = wx + b        ← forward pass
+                ↓
+                Step 2: ŷ = sigmoid(z)    ← activation
+                ↓
+                Step 3: Loss = how wrong  ← compare with actual
+                ↓
+                Step 4: Update weights    ← optimizer fixes w and b
+                ↓
+                Repeat 1000s of times → network learns!
