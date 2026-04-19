@@ -213,3 +213,12 @@ Step 2 — sigmoid:
 
 So this neuron outputs 0.579 → passes that to the next layer.
 ![alt text](hidden_neuron_internals.svg)
+
+One key thing to remember:
+        Every hidden neuron does exactly these 3 things and nothing else:
+
+                z = wx + b — weighted sum
+
+                a = σ(z) — activation
+
+                Pass a forward to next layer
