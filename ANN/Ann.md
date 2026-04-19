@@ -40,3 +40,23 @@ Perceptron calculates → "YES, spam!" → output = 1
           Bias (b)           ->      Shifts the output — gives flexibility
           Activation f(x)    ->      Decides if neuron "fires"
           Perceptron         ->      Single neuron doing binary (0/1) decision  
+
+🔹 4 core steps of how a neural network learns:-
+
+Step 1 — y = mx + b (Linear equation / Weighted Sum)
+
+This is what happens inside the neuron before activation.
+
+
+        y = mx + b
+        In neural network language, this becomes:
+        z = (w₁·x₁) + (w₂·x₂) + ... + b
+
+        x → your input data (like pixel values, or age, salary etc.)
+        w (weight) → how much importance to give each input
+        b (bias) → shifts the line up or down, gives flexibility
+        z → the raw number that comes out before activation
+
+Think of it like this: you're drawing a line through data. w decides the slope, b decides where the line crosses the y-axis.
+But this alone can only solve linear problems (straight lines). Real data is messy — so we need the next step.
+
