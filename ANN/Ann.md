@@ -149,7 +149,10 @@ When you pass input data into a neural network, it travels left to right through
 
 The output a of one layer becomes the input x of the next layer. That's it. Repeat till the end.
 
-Step-by-step Forward Propagation
+Step-by-step 
+
+Forward Propagation
+
         Step 1 — Input layer
                  Raw data enters. No calculation here. x₁, x₂, x₃ are just your features — like age, salary, height — whatever your dataset has.
         Step 2 — Hidden layer (the real work)
@@ -163,11 +166,13 @@ Step-by-step Forward Propagation
                 z_out = w₁a₁ + w₂a₂ + w₃a₃ + w₄a₄ + b_out
                 ŷ     = σ(z_out)   ← final prediction (0 to 1)
 
-       ŷ (y-hat) = your model's prediction. That's it — forward prop done!
+ŷ (y-hat) = your model's prediction. That's it — forward prop done!
 
 The Full Formula Chain
-Input → [z = wx+b → a = σ(z)] → [z = wa+b → a = σ(z)] → ŷ
-          Hidden layer                 Output layer
+
+
+        Input → [z = wx+b → a = σ(z)] → [z = wa+b → a = σ(z)] → ŷ
+                Hidden layer                 Output layer
 
 
         Term                  Meaning
@@ -181,17 +186,20 @@ Input → [z = wx+b → a = σ(z)] → [z = wa+b → a = σ(z)] → ŷ
 Numerical example:
 
 Let's say:
-        x₁ = 0.5,  w₁ = 0.8
-        x₂ = 1.0,  w₂ = -0.3
-        x₃ = 0.2,  w₃ = 0.6
-        b  = 0.1
+                x₁ = 0.5,  w₁ = 0.8
+                x₂ = 1.0,  w₂ = -0.3
+                x₃ = 0.2,  w₃ = 0.6
+                b  = 0.1
+
 Step 1 — weighted sum:
-        z = (0.5×0.8) + (1.0×-0.3) + (0.2×0.6) + 0.1
-        z = 0.4 + (-0.3) + 0.12 + 0.1
-        z = 0.32
+                z = (0.5×0.8) + (1.0×-0.3) + (0.2×0.6) + 0.1
+                z = 0.4 + (-0.3) + 0.12 + 0.1
+                z = 0.32
+
 Step 2 — sigmoid:
-        a = 1 / (1 + e⁻⁰·³²)
-        a = 1 / (1 + 0.726)
-        a ≈ 0.579
+                a = 1 / (1 + e⁻⁰·³²)
+                a = 1 / (1 + 0.726)
+                a ≈ 0.579
+
 So this neuron outputs 0.579 → passes that to the next layer.
 ![alt text](ann_forward_propagation-1.svg)
