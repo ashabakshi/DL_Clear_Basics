@@ -282,4 +282,27 @@ The 4 Steps of Backprop:
 
         This is done for every single weight in the network, moving backwards from output → hidden → input.
 
-        
+![alt text](backprop_flow.svg)   
+
+                Forward pass  →  get ŷ
+                                ↓
+                        compute Loss
+                                ↓
+                Backward pass ←  gradients flow back
+                                ↓
+                        update every weight w
+                                ↓
+                        repeat 1000s of times
+                                ↓
+                        network learns! ✅                
+
+One Analogy to lock it in 🎯
+Think of a student taking a test:
+
+                * Forward prop = student attempts all answers
+                * Loss = teacher marks how many are wrong
+                * Backprop = teacher points to each mistake and says "you went wrong here because of this"
+                * Weight update = student corrects their understanding
+                * Next epoch = student attempts the test again, slightly better
+
+This cycle repeats thousands of times — that's model training.
