@@ -132,3 +132,66 @@ ANN - is same as perceptron but with multiple layers like
 Input Layer → Hidden Layer → Output Layer
 
 ![alt text](ann_forward_propagation.svg)
+
+The Network We'll Use
+A simple ANN with:
+
+        - Input layer → 3 neurons (x₁, x₂, x₃)
+        - Hidden layer → 4 neurons
+        - Output layer → 1 neuron (final prediction)
+
+What is Forward Propagation?
+
+When you pass input data into a neural network, it travels left to right through every layer. Each layer does the same thing:
+
+        z = wx + b       ← linear step
+        a = f(z)         ← activation step
+
+The output a of one layer becomes the input x of the next layer. That's it. Repeat till the end.
+
+Step-by-step Forward Propagation
+        Step 1 — Input layer
+                 Raw data enters. No calculation here. x₁, x₂, x₃ are just your features — like age, salary, height — whatever your dataset has.
+        Step 2 — Hidden layer (the real work)
+                 Each hidden neuron does exactly 2 things:
+
+                z  = w₁x₁ + w₂x₂ + w₃x₃ + b    ← weighted sum
+                a  = σ(z)                         ← activation (sigmoid squishes it to 0-1)
+        Step 3 — Output layer
+                 Takes outputs from all 4 hidden neurons, does the same thing one more time:
+
+                z_out = w₁a₁ + w₂a₂ + w₃a₃ + w₄a₄ + b_out
+                ŷ     = σ(z_out)   ← final prediction (0 to 1)
+
+       ŷ (y-hat) = your model's prediction. That's it — forward prop done!
+
+The Full Formula Chain
+Input → [z = wx+b → a = σ(z)] → [z = wa+b → a = σ(z)] → ŷ
+          Hidden layer                 Output layer
+
+
+        Term                  Meaning
+
+        Forward prop      Data flowing left → right through the network
+        z                 Weighted sum inside a neuron (wx + b)
+        a                 Activation output after sigmoid
+        ŷ                 Final prediction of the network 
+        Hidden layer      Where the network "thinks" — learns patterns
+
+Numerical example:
+
+Let's say:
+        x₁ = 0.5,  w₁ = 0.8
+        x₂ = 1.0,  w₂ = -0.3
+        x₃ = 0.2,  w₃ = 0.6
+        b  = 0.1
+Step 1 — weighted sum:
+        z = (0.5×0.8) + (1.0×-0.3) + (0.2×0.6) + 0.1
+        z = 0.4 + (-0.3) + 0.12 + 0.1
+        z = 0.32
+Step 2 — sigmoid:
+        a = 1 / (1 + e⁻⁰·³²)
+        a = 1 / (1 + 0.726)
+        a ≈ 0.579
+So this neuron outputs 0.579 → passes that to the next layer.
+![alt text](ann_forward_propagation-1.svg)
