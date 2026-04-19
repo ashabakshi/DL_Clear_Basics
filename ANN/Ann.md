@@ -186,6 +186,7 @@ The Full Formula Chain
 Numerical example:
 
 Let's say:
+
                 x₁ = 0.5,  w₁ = 0.8
 
                 x₂ = 1.0,  w₂ = -0.3
@@ -195,13 +196,19 @@ Let's say:
                 b  = 0.1
 
 Step 1 — weighted sum:
+
                 z = (0.5×0.8) + (1.0×-0.3) + (0.2×0.6) + 0.1
+
                 z = 0.4 + (-0.3) + 0.12 + 0.1
+
                 z = 0.32
 
 Step 2 — sigmoid:
+
                 a = 1 / (1 + e⁻⁰·³²)
+
                 a = 1 / (1 + 0.726)
+                
                 a ≈ 0.579
 
 So this neuron outputs 0.579 → passes that to the next layer.
