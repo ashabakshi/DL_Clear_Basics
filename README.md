@@ -13,11 +13,13 @@
 
 ![alt text](image.png)
 
-
+        Formula inside a neuron:
+        output = f( x₁·w₁ + x₂·w₂ + x₃·w₃ + b )
+        That's it. Inputs × weights → sum → activation function → output.
 
 Perceptron: 
 
-         A Perceptron is the simplest form of a neural network — just one neuron, making a yes/no decision.
+        A Perceptron is the simplest form of a neural network — just one neuron, making a yes/no decision.
         It was invented in 1958 by Frank Rosenblatt.
         How it works:
 
@@ -31,4 +33,10 @@ Perceptron:
         Input 2: From unknown sender → x₂ = 1
 Perceptron calculates → "YES, spam!" → output = 1
 
-            
+          Concept            ->      What it means
+          
+          Neuron             ->      Basic unit — takes inputs, processes, gives output
+          Weight (w)         ->      Importance of each input
+          Bias (b)           ->      Shifts the output — gives flexibility
+          Activation f(x)    ->      Decides if neuron "fires"
+          Perceptron         ->      Single neuron doing binary (0/1) decision  
