@@ -348,25 +348,25 @@ low-level features.
 
 # Type of Activation Functions
 
-        1. Linear Activation Function
+## 1. Linear Activation Function
 
                 f(x) = x
 
                 derivative of linear activation function = 1
-A linear activation function is the simplest type of activation function.
-It basically means:
+        A linear activation function is the simplest type of activation function.
+        It basically means:
 
-f(x) = x
-So, the output is the same as the input. The neuron doesn’t transform the data it
-just passes it forward as it is.
+        f(x) = x
+        So, the output is the same as the input. The neuron doesn’t transform the data it
+        just passes it forward as it is.
 
-Where do we use it?
+        Where do we use it?
 
-In regression tasks (predicting continuous values like salary, house price, temperature, etc.).
-Usually in the output layer of a neural network, because we don’t want the output to be restricted between 0–1 (like sigmoid) or -1–1
-(like tanh).
+        In regression tasks (predicting continuous values like salary, house price, temperature, etc.).
+        Usually in the output layer of a neural network, because we don’t want the output to be restricted between 0–1 (like sigmoid) or -1–1
+        (like tanh).
 
-Example:
-If you’re predicting house price, you want outputs like ₹50,00,000 or ₹80,00,000.
-A sigmoid function would squeeze everything between 0 and 1, which won’t make sense here.
+        Example:
+        If you’re predicting house price, you want outputs like ₹50,00,000 or ₹80,00,000.
+        A sigmoid function would squeeze everything between 0 and 1, which won’t make sense here.
                 
