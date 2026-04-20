@@ -370,3 +370,30 @@ low-level features.
         If you’re predicting house price, you want outputs like ₹50,00,000 or ₹80,00,000.
         A sigmoid function would squeeze everything between 0 and 1, which won’t make sense here.
                 
+![alt text](image-1.png)
+
+Limitations: 
+
+        If you use linear activation in all layers, the whole network becomes just a linear model, no matter how many layers you add.
+        That means it cannot capture complex, non-linear patterns in data.
+        That’s why hidden layers use non-linear activations (like ReLU, tanh, sigmoid), but the output layer for regression can be linear.
+
+## 2. Sigmoid Activation Function
+
+The sigmoid function is an S-shaped curve that squashes any real number into a range between 0 and 1.
+The formula is:      
+
+                f(x) = 1 / (1 + e⁻ˣ)   
+                
+![alt text](image-2.png)
+
+Where do we use it?
+        In binary classification problems (e.g., predicting yes/no, disease/no disease, spam/not spam).
+        Usually in the output layer when you want a probability as the output.
+        Example:
+        If the sigmoid outputs 0.85, you can interpret it as 85% chance of having heart disease.
+
+Limitations
+        Vanishing gradient problem: for very large or very small inputs, the gradient becomes almost 0, which slows
+        learning.
+        Not used in hidden layers much nowadays (ReLU is preferred).
