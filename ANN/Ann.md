@@ -346,7 +346,27 @@ low-level features.
         like if we have 100 layers in a neural network and the gradient of each layer is 0.5 then the gradient of the first layer will be 0.5^100 which is very small and will not be able to update the weights properly
 
 
-        make diagram of vanishing gradient descent
+# Type of Activation Functions
 
+        1. Linear Activation Function
 
-![alt text](vanishing_gradient_descent.svg)
+                f(x) = x
+
+                derivative of linear activation function = 1
+A linear activation function is the simplest type of activation function.
+It basically means:
+
+f(x) = x
+So, the output is the same as the input. The neuron doesn’t transform the data it
+just passes it forward as it is.
+
+Where do we use it?
+
+In regression tasks (predicting continuous values like salary, house price, temperature, etc.).
+Usually in the output layer of a neural network, because we don’t want the output to be restricted between 0–1 (like sigmoid) or -1–1
+(like tanh).
+
+Example:
+If you’re predicting house price, you want outputs like ₹50,00,000 or ₹80,00,000.
+A sigmoid function would squeeze everything between 0 and 1, which won’t make sense here.
+                
