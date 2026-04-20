@@ -637,16 +637,22 @@ pre-ReLU here means a neuron that computed z = wx + b but hasn't been activated 
 
 This is where the task decides which activation you use:
 
-Activation                 When to use                           Output 
+        Activation                 When to use                           Output 
 
-LinearRegression           (predict a number)                    Any real number
-Sigmoid                    Binary classification (yes/no)        0 to 1 (probability)
-Softmax                    Multi-class (cat/dog/bird?)           Probabilities summing to 1
+        LinearRegression           (predict a number)                    Any real number
+
+        Sigmoid                    Binary classification (yes/no)        0 to 1 (probability)
+
+        Softmax                    Multi-class (cat/dog/bird?)           Probabilities summing to 1
 
 
 Hidden layers  →  ReLU (default choice)
+
                   Leaky ReLU (if neurons dying)
 
+
 Output layer   →  Linear   for regression
+
                   Sigmoid   for binary classification
+                  
                   Softmax   for multi-class classification
