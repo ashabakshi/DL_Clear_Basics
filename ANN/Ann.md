@@ -524,6 +524,8 @@ flexible and adaptive.
 
 
 The formula is same as Leaky relu
+
+
 ![alt text](image-6.png)
 
 Intuition (Easy Way)
