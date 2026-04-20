@@ -360,7 +360,7 @@ low-level features.
         So, the output is the same as the input. The neuron doesn’t transform the data it
         just passes it forward as it is.
 
-        Where do we use it?
+Where do we use it?
 
         In regression tasks (predicting continuous values like salary, house price, temperature, etc.).
         Usually in the output layer of a neural network, because we don’t want the output to be restricted between 0–1 (like sigmoid) or -1–1
@@ -388,12 +388,14 @@ The formula is:
 ![alt text](image-2.png)
 
 Where do we use it?
-        In binary classification problems (e.g., predicting yes/no, disease/no disease, spam/not spam).
-        Usually in the output layer when you want a probability as the output.
-        Example:
-        If the sigmoid outputs 0.85, you can interpret it as 85% chance of having heart disease.
+
+                In binary classification problems (e.g., predicting yes/no, disease/no disease, spam/not spam).
+                Usually in the output layer when you want a probability as the output.
+                Example:
+                If the sigmoid outputs 0.85, you can interpret it as 85% chance of having heart disease.
 
 Limitations
-        Vanishing gradient problem: for very large or very small inputs, the gradient becomes almost 0, which slows
-        learning.
-        Not used in hidden layers much nowadays (ReLU is preferred).
+
+                Vanishing gradient problem: for very large or very small inputs, the gradient becomes almost 0, which slows
+                learning.
+                Not used in hidden layers much nowadays (ReLU is preferred).
