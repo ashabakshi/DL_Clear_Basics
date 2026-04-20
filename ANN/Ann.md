@@ -399,3 +399,33 @@ Limitations
                 Vanishing gradient problem: for very large or very small inputs, the gradient becomes almost 0, which slows
                 learning.
                 Not used in hidden layers much nowadays (ReLU is preferred).
+
+## 3. Tanh Activation Function
+
+The tanh function (short for hyperbolic tangent) is another squashing function
+like sigmoid, but instead of squeezing values into 0 to 1, it squeezes them into -1
+to +1.
+
+        Formula :
+                        tanh(x) = (e^x - e^-x) / (e^x + e^-x)
+
+![alt text](image-3.png)
+
+Where do we use it?
+
+                * Often used in hidden layers of nural network
+
+                * Useful when data has both positive and negative values because it centres the
+                output around 0 (unlike sigmoid which is centred at 0.5)
+
+Advantages
+
+                * Outputs are zero-centered (good for optimization).
+
+                * Stronger gradients than sigmoid in the range (−1,1), so learning can be faster.
+
+Limitations
+
+                * Still suffers from the vanishing gradient problem when inputs are very large (positive or negative).
+
+                * That’s why in modern deep learning, ReLU is more common in hidden layers.
