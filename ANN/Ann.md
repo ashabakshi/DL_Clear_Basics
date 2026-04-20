@@ -443,7 +443,7 @@ It’s super simple:
 That means:
 
                          IF input x < 0 -> output = 0
-                         
+
                          IF input x > 0 -> output = x
 
 So it either passes positive values as they are or blocks negative values by turning them into 0.
@@ -467,3 +467,51 @@ Limitations
         * Dying ReLU problem: sometimes neurons get stuck at 0 forever if weights update badly.
 
         * Not smooth at 0 (not differentiable there, but still works fine in practice).
+
+
+## 5. Leaky ReLU Activation Function
+It’s just like ReLU, but with a small twist.
+In ReLU, whenever the input is negative, the output is 0.
+
+
+Leaky ReLU’s fix:
+
+Instead of giving 0 for negative inputs, it gives a tiny negative value (like 0.01 × input).
+This way, the neuron is never completely dead.
+
+
+Formula:
+
+                f(x) = x if x > 0
+                0.01x if x<=0
+
+![alt text](image-5.png)
+
+Advantages of Leaky ReLU
+
+
+        Fixes “Dead Neuron” Problem
+
+                * In normal ReLU, if inputs go negative, the output is always negative neuronsays 0, and sometimes the neuron
+                stops learning permanently (dead neuron).
+
+                * Leaky ReLU solves this by allowing a small negative slope, so neurons still update weights.
+
+
+Computationally Simple
+
+                * Just like ReLU, the function is very easy to compute (no heavy math like exponentials in Sigmoid/Tanh).
+
+
+Better Gradient Flow
+
+                * Since even negative inputs have a small gradient (e.g., 0.01), the network can continue learning, reducing the
+                vanishing gradient issue.
+
+
+        Works Well in Deep Networks
+
+                * Especially useful in deep neural networks where ReLU may suffer from many dead neurons.
+
+
+Limitations: small negative slope may bias results, slope value needs tuning
