@@ -515,3 +515,85 @@ Better Gradient Flow
 
 
 Limitations: small negative slope may bias results, slope value needs tuning
+
+## 6. PReLU Activation Function
+PReLU (Parametric Rectified Linear Unit) is an improved version of Leaky ReLU.
+In Leaky ReLU, the slope for negative values (like 0.01) is fixed by us. But in PReLU,
+that slope is learned automatically by the model during training. This makes it more
+flexible and adaptive.
+
+
+The formula is same as Leaky relu
+![alt text](image-6.png)
+
+Intuition (Easy Way)
+
+
+                ReLU: Negative values are killed (output = 0).
+
+
+                Leaky ReLU: Negative values are given a tiny leak (e.g., 0.01x).
+
+
+                PReLU: Instead of fixing that leak, the model says “I’ll learn the best leak slope myself.”
+
+
+Advantages
+
+                1. Fixes dead neurons (like Leaky ReLU).
+
+                2. Adaptive – slope is learned, not fixed.
+
+                3. Better accuracy – often improves CNNs and deep networks.
+
+Limitations
+
+                1. Extra parameters – slope a adds more trainable values.
+
+                2. Risk of overfitting if dataset is small.
+
+                3. Slightly more complex than plain ReLU.
+
+## 7. Swish Activation Function
+Swish is a smooth, non-linear activation function introduced by Google
+researchers.
+
+It is Defined as :
+
+                f(x) = x * sigmoid(x)
+
+Where σ(x) is the sigmoid function
+so basically: Swish = X * Sigmoid(x)
+
+![alt text](image-7.png)
+
+
+Intuition (Easy Way)
+
+Think of it as ReLU but smoother.
+
+
+For large positive inputs → output ≈ input (like ReLU).
+
+For large negative inputs → output is small but not strictly zero (like
+Leaky ReLU).
+
+Around zero → the curve is smooth, not sharp like ReLU.
+
+This smoothness often makes training deep networks easier.
+
+Advantages
+
+                1. Smooth curve → better gradient flow, avoids sharp jumps like ReLU.
+
+                2. Non-monotonic → can adapt better to complex patterns.
+
+                3. Works well in deep networks (often improves accuracy over ReLU).
+
+Limitations
+
+                1. More computation (needs sigmoid).
+
+                2. Not always better than ReLU (depends on problem).
+
+                3. Slight risk of slower training compared to simple ReLU.
