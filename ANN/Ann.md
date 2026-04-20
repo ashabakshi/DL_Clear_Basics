@@ -599,3 +599,54 @@ Limitations
                 2. Not always better than ReLU (depends on problem).
 
                 3. Slight risk of slower training compared to simple ReLU.
+
+# Usage of activation functions
+![Usage Of AF](activation_functions_per_layer.svg)
+
+## Layer 1 — No activation
+Raw inputs just pass through. No transformation needed here — you're just feeding data in. Applying activation on raw input would distort it before learning even starts.
+
+## Layer 2 — Pre-ReLU → ReLU
+
+Pre-ReLU = z = wx + b (the weighted sum, before activation)
+
+ReLU = max(0, z) — if z is negative, output is 0. If positive, output is z as-is.
+
+        z = -3  →  ReLU = 0   (dead, ignored)
+
+        z =  5  →  ReLU = 5   (passes through)
+
+Why ReLU? It's fast, simple, and solves the vanishing gradient problem that sigmoid has in deep networks.
+
+## Layer 3 — ReLU / Leaky ReLU / pre-ReLU
+
+ReLU → same as above, kills negatives completely.
+
+Leaky ReLU → small fix to ReLU. Instead of killing negatives, it allows a tiny slope:
+
+        z = -3  →  Leaky ReLU = -3 × 0.01 = -0.03   (small negative, not dead)
+
+        z =  5  →  Leaky ReLU = 5                     (same as ReLU)
+
+Why Leaky? Solves the dying ReLU problem — some neurons in deep networks permanently output 0 and stop learning. Leaky ReLU keeps them alive.
+
+
+pre-ReLU here means a neuron that computed z = wx + b but hasn't been activated yet — its activation happens next.
+
+## Layer 4 — Output layer activations
+
+This is where the task decides which activation you use:
+
+Activation                 When to use                           Output 
+
+LinearRegression           (predict a number)                    Any real number
+Sigmoid                    Binary classification (yes/no)        0 to 1 (probability)
+Softmax                    Multi-class (cat/dog/bird?)           Probabilities summing to 1
+
+
+Hidden layers  →  ReLU (default choice)
+                  Leaky ReLU (if neurons dying)
+
+Output layer   →  Linear   for regression
+                  Sigmoid   for binary classification
+                  Softmax   for multi-class classification
