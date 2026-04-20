@@ -342,3 +342,11 @@ If these gradients are very small (< 1), multiplying them across many layers mak
 This means the first few layers (closer to the input) never get updated properly, so the network fails to learn important
 low-level features.        
 
+
+        like if we have 100 layers in a neural network and the gradient of each layer is 0.5 then the gradient of the first layer will be 0.5^100 which is very small and will not be able to update the weights properly
+
+
+        make diagram of vanishing gradient descent
+
+
+![alt text](vanishing_gradient_descent.svg)
