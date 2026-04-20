@@ -313,3 +313,23 @@ Think of a student taking a test:
                 * Next epoch = student attempts the test again, slightly better
 
 This cycle repeats thousands of times — that's model training.
+
+# Activation Functions
+
+        in sigmoid activation function  we face vanishing gradient problem in deep neural networks
+        
+        
+                sigmoid activation function = 1/(1+e^-x)
+
+        derivative of sigmoid activation function = sigmoid(x) * (1 - sigmoid(x))
+        that give value between 0 and 1
+        that creates vanishing gradient problem in deep neural networks which does not allow the network to learn properly 
+
+
+        
+
+# Vanishing gradient descent    
+
+        vanishing gradient problem is a problem in deep learning where the gradients become very small during backpropagation, causing the weights to update very slowly or not at all.
+        and
+
