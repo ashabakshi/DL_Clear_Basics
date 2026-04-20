@@ -601,6 +601,7 @@ Limitations
                 3. Slight risk of slower training compared to simple ReLU.
 
 # Usage of activation functions
+
 ![Usage Of AF](activation_functions_per_layer.svg)
 
 ## Layer 1 — No activation
