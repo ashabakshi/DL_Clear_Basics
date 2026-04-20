@@ -429,3 +429,36 @@ Limitations
                 * Still suffers from the vanishing gradient problem when inputs are very large (positive or negative).
 
                 * That’s why in modern deep learning, ReLU is more common in hidden layers.
+
+
+## 4. ReLU Activation Function
+ ReLU stands for Rectified Linear Unit.
+
+It’s super simple: 
+                         f(x) = max(0, x)
+![alt text](image-4.png)
+That means:
+                         IF input x < 0 -> output = 0
+                         IF input x > 0 -> output = x
+
+So it either passes positive values as they are or blocks negative values by turning them into 0.
+
+Where do we use it?
+
+        * Hidden layers of almost all modern deep neural networks.
+
+        * Works really well in CNNs (Convolutional Neural Networks), image recognition, NLP, and many more tasks.
+
+Advantages
+
+        * Very fast and simple to compute.
+
+        * Helps avoid vanishing gradient problem (better than sigmoid/tanh).
+
+        * Makes training deep networks much faster.
+
+Limitations
+
+        * Dying ReLU problem: sometimes neurons get stuck at 0 forever if weights update badly.
+        
+        * Not smooth at 0 (not differentiable there, but still works fine in practice).
