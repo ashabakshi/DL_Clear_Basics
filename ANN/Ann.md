@@ -646,13 +646,17 @@ This is where the task decides which activation you use:
         Softmax                    Multi-class (cat/dog/bird?)           Probabilities summing to 1
 
 
-Hidden layers  →  ReLU (default choice)
+Hidden layers  →  
 
-                  Leaky ReLU (if neurons dying)
+                ReLU (default choice)
+
+                Leaky ReLU (if neurons dying)
 
 
-Output layer   →  Linear   for regression
+Output layer   →  
 
-                  Sigmoid   for binary classification
-                  
-                  Softmax   for multi-class classification
+                Linear   for regression
+
+                Sigmoid   for binary classification
+
+                Softmax   for multi-class classification
