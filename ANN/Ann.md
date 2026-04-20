@@ -316,20 +316,29 @@ This cycle repeats thousands of times — that's model training.
 
 # Activation Functions
 
-        in sigmoid activation function  we face vanishing gradient problem in deep neural networks
+in sigmoid activation function  we face vanishing gradient problem in deep neural networks
         
         
-                sigmoid activation function = 1/(1+e^-x)
+        sigmoid activation function = 1/(1+e^-x)
 
         derivative of sigmoid activation function = sigmoid(x) * (1 - sigmoid(x))
-        that give value between 0 and 1
-        that creates vanishing gradient problem in deep neural networks which does not allow the network to learn properly 
+that give value between 0 and 1 and 
+that creates vanishing gradient problem in deep neural networks which does not allow the network to learn properly 
 
 
         
 
 # Vanishing gradient descent    
 
-        vanishing gradient problem is a problem in deep learning where the gradients become very small during backpropagation, causing the weights to update very slowly or not at all.
-        and
+The vanishing gradient problem happens during backpropagation when gradients (the small updates we calculate to
+adjust weights) become so tiny that the earlier layers of a deep neural network stop learning.
+
+In other words:
+
+When training deep networks, gradients are multiplied layer by layer.
+
+If these gradients are very small (< 1), multiplying them across many layers makes them shrink toward zero.
+
+This means the first few layers (closer to the input) never get updated properly, so the network fails to learn important
+low-level features.        
 
