@@ -755,3 +755,89 @@ Softmax
         Formula: e^x_i / Σe^x_j (for all classes j)
 
         Behavior: Converts raw scores into a probability distribution.
+
+
+# Optimizer
+
+Optimizers are algorithms used to update the weights of a neural network during training to minimize the loss function.
+
+Common optimizers include:
+
+1. Batch Gradient Descent (a.k.a. “Vanilla” Gradient Descent):
+        • You send all 1 lakh rows at once.
+        • Compute cKerasunction on the entire dataset.
+        • Do 1 weight update per epoch.
+        • If you run 100 epochs → 100 weight updates in total.
+Advantages
+
+        • Smooth and stable updates (less noisy).
+        • Converges steadily because gradient is calculated from all data.
+
+Disadvantages
+
+        • Slow when dataset is huge (computing gradients for all rows before updating).
+        • Requires a lot of RAM/VRAM to load the full dataset at once.
+
+2. Stochastic Gradient Descent (SGD):
+
+        • You send 1 row at a time.
+        • Compute cost for that single row.
+        • Update weights immediately.
+        • With 1 lakh rows, in 1 epoch → 1 lakh updates.
+        • In 100 epochs → 1 crore updates.
+
+Advantages
+
+        • Much faster to start learning (weights update after every row).
+        • Works well for very large datasets (you don’t need all rows in memory at once).
+
+Disadvantages
+
+        • Updates are very noisy → loss curve jumps around instead of smoothly decreasing.
+        • Can be unstable (harder to converge).
+        • Slower to reach the exact minimum compared to mini-batch.
+
+3. Mini-batch Gradient Descent:
+
+        • A compromise between batch and SGD.
+        • Split data into small batches (e.g., 32, 64, 128 rows).
+        • Each batch → forward pass → backward pass → weight update.
+        • So: in 1 lakh rows, batch size 100 → 1000 updates per epoch.
+
+Advantages
+
+        • Best of both worlds — faster than batch, more stable than SGD.
+        • Most commonly used in practice.
+        • Works well on GPUs.
+
+Disadvantages
+
+        • Need to choose a batch size (32, 64, 128, etc.).
+        • Can still be noisy, but much less than SGD.
+
+This is what almost all deep learning frameworks use today (including Keras/TensorFlow).
+
+4. Momentum:
+                • Adds “inertia” to updates.
+                • If previous updates were in the same direction → keep going faster.
+                • If directions change → slow down.
+                • Helps escape local minima and speeds up convergence.
+
+5. RMSprop:
+                • Adapts learning rate for each weight individually.
+                • Gives smaller updates for weights that change a lot.
+                • Good for sparse data.
+              
+
+6. Adam (most used):
+                • Combines Momentum + RMSprop.
+                • Adapts learning rate per weight.
+                • Fast and stable.
+                • Default choice for most problems.
+
+
+# Momentum
+
+5. RMSprop
+
+6. Adam (most used)
