@@ -661,3 +661,50 @@ Output layer   →
                 Sigmoid   for binary classification
 
                 Softmax   for multi-class classification
+
+
+# epoch - loss ,accuracy,val_loss,val_accuracy
+
+![alt text](image-8.png)
+
+1. loss -
+
+        This is the training loss.
+
+        It tells you how wrong your model’s predictions are on the training set, according to the loss function you chose (in your case: binary cross-entropy).
+
+        Lower is better.
+
+        During training, the model tries to reduce this number by updating weights with gradient descent.
+
+2. accuracy -
+
+        This is the training accuracy.
+
+        It tells you what fraction of training samples the model is correctly predicting.
+
+        Example: If you have 100 samples and the model gets 80 correct → accuracy = 0.80 (80%).
+
+3. val_loss -
+
+        This is the validation loss.
+
+        After generalizing well or just memorizingion set (the split you gave with validation_data=...) and calculates the loss on that unseen data.
+
+        This tells you whether your model is generalizing well or just memorizing the training data.
+
+4. val_accuracy -
+
+        This is the validation accuracy.
+
+        It’s the percentage of correct predictions on the validation set.
+
+        If accuracy is high but val_accuracy is low → your model is probably overfitting (memorizing training but failing on new data).
+
+Where to pay attention
+
+        • loss & accuracy = how well model is doing on training data.
+
+        • val_loss & val_accuracy = how well model is doing on new unseen data.
+
+        Always pay more attention to validation metrics because that shows how the model will behave in the real world.
