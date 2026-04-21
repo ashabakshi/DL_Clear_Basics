@@ -759,85 +759,166 @@ Softmax
 
 # Optimizer
 
-Optimizers are algorithms used to update the weights of a neural network during training to minimize the loss function.
+# Optimizers in Neural Networks (Deep Learning)
 
-Common optimizers include:
+## 🔹 What is an Optimizer?
 
-1. Batch Gradient Descent (a.k.a. “Vanilla” Gradient Descent):
-        • You send all 1 lakh rows at once.
-        • Compute cKerasunction on the entire dataset.
-        • Do 1 weight update per epoch.
-        • If you run 100 epochs → 100 weight updates in total.
-Advantages
+An optimizer is an algorithm used to **update the weights and biases of a neural network** in order to **minimize the loss function**.
 
-        • Smooth and stable updates (less noisy).
-        • Converges steadily because gradient is calculated from all data.
+In simple terms:
 
-Disadvantages
+* Model makes predictions
+* Loss function tells how wrong it is
+* Optimizer adjusts weights to reduce that error
 
-        • Slow when dataset is huge (computing gradients for all rows before updating).
-        • Requires a lot of RAM/VRAM to load the full dataset at once.
+👉 Goal: Reach the **minimum loss (best accuracy)**
 
-2. Stochastic Gradient Descent (SGD):
+---
 
-        • You send 1 row at a time.
-        • Compute cost for that single row.
-        • Update weights immediately.
-        • With 1 lakh rows, in 1 epoch → 1 lakh updates.
-        • In 100 epochs → 1 crore updates.
+## 🔹 How Optimization Works (Core Idea)
 
-Advantages
+The optimizer uses **gradients (from backpropagation)** to update weights.
 
-        • Much faster to start learning (weights update after every row).
-        • Works well for very large datasets (you don’t need all rows in memory at once).
+Basic update rule:
 
-Disadvantages
+```
+New Weight = Old Weight - Learning Rate × Gradient
+```
 
-        • Updates are very noisy → loss curve jumps around instead of smoothly decreasing.
-        • Can be unstable (harder to converge).
-        • Slower to reach the exact minimum compared to mini-batch.
+* **Gradient** → Direction of steepest increase in loss
+* **Learning Rate (η)** → Step size
 
-3. Mini-batch Gradient Descent:
+👉 So we move in the *opposite direction of gradient* to reduce loss.
 
-        • A compromise between batch and SGD.
-        • Split data into small batches (e.g., 32, 64, 128 rows).
-        • Each batch → forward pass → backward pass → weight update.
-        • So: in 1 lakh rows, batch size 100 → 1000 updates per epoch.
+---
 
-Advantages
+## 🔹 Types of Optimizers
 
-        • Best of both worlds — faster than batch, more stable than SGD.
-        • Most commonly used in practice.
-        • Works well on GPUs.
+### 1. Gradient Descent (GD)
 
-Disadvantages
+Updates weights using the **entire dataset**
 
-        • Need to choose a batch size (32, 64, 128, etc.).
-        • Can still be noisy, but much less than SGD.
+#### Types:
 
-This is what almost all deep learning frameworks use today (including Keras/TensorFlow).
+* **Batch Gradient Descent**
+* **Stochastic Gradient Descent (SGD)**
+* **Mini-batch Gradient Descent**
 
-4. Momentum:
-                • Adds “inertia” to updates.
-                • If previous updates were in the same direction → keep going faster.
-                • If directions change → slow down.
-                • Helps escape local minima and speeds up convergence.
+#### ✅ Advantages:
 
-5. RMSprop:
-                • Adapts learning rate for each weight individually.
-                • Gives smaller updates for weights that change a lot.
-                • Good for sparse data.
-              
+* Simple and easy to understand
+* Stable convergence (batch GD)
 
-6. Adam (most used):
-                • Combines Momentum + RMSprop.
-                • Adapts learning rate per weight.
-                • Fast and stable.
-                • Default choice for most problems.
+#### ❌ Disadvantages:
+
+* Slow for large datasets
+* Can get stuck in local minima
+* SGD can be noisy
+
+---
+
+### 2. Stochastic Gradient Descent (SGD)
+
+Updates weights **for each training example**
+
+#### ✅ Advantages:
+
+* Faster updates
+* Can escape local minima
+
+#### ❌ Disadvantages:
+
+* Noisy updates
+* May not converge smoothly
+
+---
+
+### 3. Momentum
+
+Improves SGD by adding **past gradients (velocity)**
+
+👉 Helps accelerate in the correct direction
+
+#### ✅ Advantages:
+
+* Faster convergence
+* Reduces oscillation
+
+#### ❌ Disadvantages:
+
+* Extra hyperparameter (momentum value)
+* Can overshoot minima
+
+---
+
+### 4. RMSprop (Root Mean Square Propagation)
+
+Adjusts learning rate based on **recent gradients**
+
+👉 Large gradients → smaller step
+👉 Small gradients → larger step
+
+#### ✅ Advantages:
+
+* Works well for non-stationary problems
+* Faster convergence than SGD
+
+#### ❌ Disadvantages:
+
+* Still needs tuning
+* Can sometimes be unstable
+
+---
+
+### 5. Adam (Adaptive Moment Estimation)
+
+Most commonly used optimizer
+Combines:
+
+* Momentum
+* RMSprop
+
+👉 Uses both **mean and variance of gradients**
+
+#### ✅ Advantages:
+
+* Fast and efficient
+* Works well in most cases
+* Less tuning required
+
+#### ❌ Disadvantages:
+
+* Can sometimes generalize worse than SGD
+* Slightly more memory usage
+
+---
+
+## 🔹 Comparison Summary
+
+| Optimizer | Speed     | Stability | Memory | Use Case       |
+| --------- | --------- | --------- | ------ | -------------- |
+| GD        | Slow      | High      | Low    | Small datasets |
+| SGD       | Fast      | Low       | Low    | Large datasets |
+| Momentum  | Faster    | Medium    | Medium | Deep networks  |
+| RMSprop   | Fast      | Medium    | Medium | RNNs           |
+| Adam      | Very Fast | High      | High   | Most DL tasks  |
+
+---
+
+## 🔹 Which Optimizer to Use?
+
+* Start with **Adam** (default choice)
+* Use **SGD + Momentum** for better generalization
+* Use **RMSprop** for sequence models (like RNN)
+
+---
+
+## 🔹 Key Takeaways
+
+* Optimizer = **how model learns**
+* It updates weights using gradients
+* Different optimizers = different strategies to reach minimum loss faster and better
+
+---
 
 
-# Momentum
-
-5. RMSprop
-
-6. Adam (most used)
