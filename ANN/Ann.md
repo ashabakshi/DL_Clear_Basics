@@ -708,3 +708,50 @@ Where to pay attention
         • val_loss & val_accuracy = how well model is doing on new unseen data.
 
         Always pay more attention to validation metrics because that shows how the model will behave in the real world.
+
+## loss
+
+loss differece between binary cross entropy and categorical cross entropy
+
+Binary Cross-Entropy (BCE)
+
+        Use Case: Binary Classification (two classes only, e.g., Yes/No, Spam/Not Spam, Cat/Dog).
+
+        Output: Single neuron with Sigmoid activation (output between 0 and 1).
+
+        Formula: -[y * log(p) + (1 - y) * log(1 - p)]
+
+        Example: Predicting if an email is spam (1) or not spam (0).
+
+Categorical Cross-Entropy (CCE)
+
+        Use Case: Multi-class Classification (three or more classes, e.g., Cat/Dog/Bird, or digits 0-9).
+
+        Output: Multiple neurons with Softmax activation (outputs sum to 1).
+
+        Formula: -Σ[y_i * log(p_i)] (sum over all classes)
+
+        Example: Classifying an image as a cat, dog, or bird.
+
+
+sigmoid vs softmax
+
+Sigmoid
+
+        Use Case: Binary Classification (output between 0 and 1).
+
+        Output: Single value.
+
+        Formula: 1 / (1 + e^-x)
+
+        Behavior: Squashes any input into a probability between 0 and 1.
+
+Softmax
+
+        Use Case: Multi-class Classification (outputs sum to 1).
+
+        Output: Multiple values (one per class).
+
+        Formula: e^x_i / Σe^x_j (for all classes j)
+
+        Behavior: Converts raw scores into a probability distribution.
