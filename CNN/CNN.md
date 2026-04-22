@@ -38,6 +38,9 @@ ANNs (Artificial Neural Networks) treat every pixel as an **independent input**,
 
 ---
 ## ❓ What actually is CNN ?
+
+<img src="image-1.png" alt="CNN Architecture" width="600"/>
+
 If I ask you “What’s in the picture?”, you don’t try to look at all the
 LEGO pieces at once.
 
@@ -47,7 +50,8 @@ LEGO pieces at once.
     “Oh, I see windows!”
     “Oh, that looks like a tower!”
     Finally, you say: “Yes, this is a castle!”
-    That’s exactly how Convolutional Neural Networks (CNNs) work.
-    They don’t try to understand the whole image at once they look at small
-    patches and slowly build up the full picture.
-![alt text](image-1.png)
+
+That’s exactly how Convolutional Neural Networks (CNNs) work.
+They don’t try to understand the whole image at once they look at small
+patches and slowly build up the full picture.
+
