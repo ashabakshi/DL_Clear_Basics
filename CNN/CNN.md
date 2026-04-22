@@ -37,3 +37,17 @@ ANNs (Artificial Neural Networks) treat every pixel as an **independent input**,
 > 💡 **CNN solves this** by using shared filters that slide over the image — learning patterns regardless of where they appear.
 
 ---
+## ❓ What actually is CNN ?
+If I ask you “What’s in the picture?”, you don’t try to look at all the
+LEGO pieces at once.
+
+    Instead, you:
+    First look at small areas maybe a window, a tower, or a door.
+    Then you put those pieces together in your mind:
+    “Oh, I see windows!”
+    “Oh, that looks like a tower!”
+    Finally, you say: “Yes, this is a castle!”
+    That’s exactly how Convolutional Neural Networks (CNNs) work.
+    They don’t try to understand the whole image at once they look at small
+    patches and slowly build up the full picture.
+![alt text](image-1.png)
