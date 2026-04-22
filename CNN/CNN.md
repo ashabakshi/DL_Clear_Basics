@@ -32,6 +32,8 @@ ANNs (Artificial Neural Networks) treat every pixel as an **independent input**,
 - **Overfitting** — So many parameters → model memorizes instead of learning
 - **Not translation invariant** — If a cat moves slightly in the image, ANN sees it as a completely different image
 
+![alt text](image.png)
+
 > 💡 **CNN solves this** by using shared filters that slide over the image — learning patterns regardless of where they appear.
 
 ---
