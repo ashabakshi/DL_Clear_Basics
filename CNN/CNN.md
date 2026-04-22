@@ -55,3 +55,13 @@ That’s exactly how Convolutional Neural Networks (CNNs) work.
 They don’t try to understand the whole image at once they look at small
 patches and slowly build up the full picture.
 
+<img src="image-3.png" alt="CNN Architecture" width="600"/>
+1. Convolution Layer The Detective’s Magnifying Glass
+This layer slides a small filter (like a 3×3 window) across the
+picture.
+The filter might highlight edges, colors, or textures.
+Example: One filter learns to find “straight lines,” another learns
+“round shapes.”
+It’s like a detective scanning for clues in tiny parts of the picture.
+<img src="image-2.png" alt="CNN Architecture" width="600"/>
+<img src="image-4.png" alt="CNN Architecture" width="600"/>
