@@ -107,7 +107,9 @@ As the network goes **deeper**, it learns more complex things:
 At the end, CNN **flattens** everything it learned and connects it like a normal ANN.
 
 It then gives probability scores like:
-        “70% chance it’s a cat ”
-        “20% chance it’s a dog ”
-        “10% chance it’s a rabbit ”
+
+            “70% chance it’s a cat ”
+            “20% chance it’s a dog ”
+            “10% chance it’s a rabbit ”
+
 Whichever is highest, that’s the answer!
