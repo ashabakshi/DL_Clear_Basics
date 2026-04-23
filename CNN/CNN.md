@@ -188,3 +188,25 @@ Deep layers **combine all parts** together:
 ![alt text](image-6.png)
 
 ---
+
+## 🔢 How Does a Computer See an Image?
+
+> Before CNN can detect anything — it needs to **read** the image as numbers!
+
+---
+
+### 📷 Image = Matrix of Numbers
+
+Every image is just a **grid of pixel values** to a computer:
+
+- Each pixel has a value between **0 (black) → 255 (white)**
+- CNN reads these numbers and finds patterns in them
+
+---
+
+### 🖤 Grayscale Image
+
+A grayscale image has only **1 channel**:
+
+
+---
