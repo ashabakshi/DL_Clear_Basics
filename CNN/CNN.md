@@ -221,6 +221,8 @@ Each pixel = 1 number (0 to 255)
 
 ### 🌈 RGB Image
 
+![alt text](image-7.png)
+
 A color image has **3 channels**:
 
 | Channel | Value Range |
@@ -238,3 +240,45 @@ So a color image shape = `Height × Width × 3`
 A **filter (kernel)** is a small matrix (like 3×3) that slides over the image and detects specific patterns.
 
 #### Horizontal Filter:
+```
+-1  -1  -1
+ 0   0   0
+ 1   1   1
+```
+
+ → Detects **horizontal edges** (top-bottom contrast)
+
+#### Vertical Filter:
+```
+-1   0   1
+-1   0   1
+-1   0   1
+``` 
+→ Detects **vertical edges** (left-right contrast)
+
+---
+
+### ⚙️ How Filter Works?
+
+Filter slides over the image matrix and does **element-wise multiplication + sum**:
+
+        Image Patch     Filter        Result
+        0   0   255     -1  0  1
+        0   0   255  ×  -1  0  1   →  High value = Edge detected! ✅
+        0   0   255     -1  0  1   
+ 
+> 💡 High output value = strong edge found at that position!
+
+---
+
+### 🧠 Key Takeaway
+
+| Concept | Meaning |
+|---|---|
+| Pixel value | 0 = black, 255 = white |
+| Grayscale | 1 channel (H × W × 1) |
+| RGB | 3 channels (H × W × 3) |
+| Filter/Kernel | Small matrix that detects patterns |
+| High filter output | Edge or feature detected! |
+
+---
