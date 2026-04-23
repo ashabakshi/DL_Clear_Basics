@@ -321,7 +321,7 @@ So output = **4×4** 🎯
 
 ### ⚠️ The Problem
 
-> Every Conv layer ke baad image **chhoti hoti jaati hai!**  
-> Isko rokne ke liye use karte hain → **Padding** 🛡️
+> After every Conv layer image **smaller**!  
+> To prevent this → use **Padding** 🛡️
 
 ---
