@@ -282,3 +282,46 @@ Filter slides over the image matrix and does **element-wise multiplication + sum
 | High filter output | Edge or feature detected! |
 
 ---
+---
+
+## 📐 Convolution Output Size — Why 6×6 × 3×3 = 4×4?
+![alt text](image-7.png)
+---
+
+### 🧮 Formula:
+
+            Output Size = (Input Size - Filter Size) + 1
+**Example:**
+            Input = 6×6,  Filter = 3×3
+            Output = (6 - 3) + 1 = 4×4 ✅   
+---
+
+### 👀 Visual — Where Does the Filter Fit?
+
+On a 6×6 image, a 3×3 filter can slide to **4 positions** horizontally and **4 positions** vertically:
+
+            ⬛⬛⬛ . . .     ← position 1
+            . ⬛⬛⬛ . .     ← position 2
+            . . ⬛⬛⬛ .     ← position 3
+            . . . ⬛⬛⬛     ← position 4
+So output = **4×4** 🎯
+
+---
+
+### 📊 More Examples
+
+| Input | Filter | Output |
+|---|---|---|
+| 6×6 | 3×3 | 4×4 |
+| 8×8 | 3×3 | 6×6 |
+| 8×8 | 5×5 | 4×4 |
+| 10×10 | 3×3 | 8×8 |
+
+---
+
+### ⚠️ The Problem
+
+> Every Conv layer ke baad image **chhoti hoti jaati hai!**  
+> Isko rokne ke liye use karte hain → **Padding** 🛡️
+
+---
