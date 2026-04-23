@@ -182,3 +182,9 @@ Deep layers **combine all parts** together:
 > CNN builds understanding from scratch — just like a baby first sees shapes, then learns faces! 👶
 
 ---
+
+### Finding the edge with maths
+
+![alt text](image-6.png)
+
+---
