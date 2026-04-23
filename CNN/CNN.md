@@ -208,5 +208,33 @@ Every image is just a **grid of pixel values** to a computer:
 
 A grayscale image has only **1 channel**:
 
+Each pixel = 1 number (0 to 255)
+```
+0   0   0   255  255  255
+0   0   0   255  255  255
+0   0   0   255  255  255
+```
+---
+> Left side dark (0s) → Right side bright (255s) = a simple edge!
 
 ---
+
+### 🌈 RGB Image
+
+A color image has **3 channels**:
+
+| Channel | Value Range |
+|---|---|
+| 🔴 Red | 0 – 255 |
+| 🟢 Green | 0 – 255 |
+| 🔵 Blue | 0 – 255 |
+
+So a color image shape = `Height × Width × 3`
+
+---
+
+### 🔍 Filters — How Edges Are Detected
+
+A **filter (kernel)** is a small matrix (like 3×3) that slides over the image and detects specific patterns.
+
+#### Horizontal Filter:
