@@ -347,11 +347,11 @@ Add a border of **zeros** around the image before applying the filter.
 
 ![alt text](padding_stride_cnn.svg)
 
-    Original 6×6
-    ↓  add 1 layer of zeros around it
-    Padded 8×8
-    ↓  apply 3×3 filter
-    Output 6×6  ← same size as input!
+                Original 6×6
+                ↓  add 1 layer of zeros around it
+                Padded 8×8
+                ↓  apply 3×3 filter
+                Output 6×6  ← same size as input!
 
 ### Formula with Padding
 
@@ -414,3 +414,28 @@ Filter **jumps 2 pixels** → faster, smaller output
 | Default value | 0 or 1 | 1 |
 
 ---
+
+---
+
+## 🏊 Pooling Layer — Shrink Smart
+
+After convolution, the feature map is still large.
+Pooling **reduces the size** while keeping the most important information.
+
+> Think of it like zooming out — you lose tiny details but the big picture stays clear!
+
+---
+
+### ⚙️ How Pooling Works?
+
+A small window (usually **2×2**) slides over the feature map with **stride 2**.
+At each position, it picks one value from the 4 cells.
+
+---
+
+### 1. Max Pooling — Pick the Largest
+
+Takes the **maximum value** from each 2×2 window.
+
+
+![alt text](image-9.png)
