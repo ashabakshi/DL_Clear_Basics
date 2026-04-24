@@ -325,3 +325,92 @@ So output = **4×4** 🎯
 > To prevent this → use **Padding** 🛡️
 
 ---
+
+# Padding and Strides
+
+---
+
+## 🛡️ Padding — Saving the Image Size
+
+### The Problem
+Every time a filter slides over the image, the output gets **smaller**:
+
+
+    6×6 input + 3×3 filter → 4×4 output  (shrinks!)
+
+After many layers → image becomes **too small** to learn from.
+
+
+---
+### The Solution — Padding
+Add a border of **zeros** around the image before applying the filter.
+
+![alt text](padding_stride_cnn.svg)
+
+    Original 6×6
+    ↓  add 1 layer of zeros around it
+    Padded 8×8
+    ↓  apply 3×3 filter
+    Output 6×6  ← same size as input!
+
+### Formula with Padding
+
+            Output Size = (Input Size - Filter Size + 2 × Padding) / Stride + 1 
+| Input | Filter | Padding | Output |
+|---|---|---|---|
+| 6×6 | 3×3 | 0 | 4×4 |
+| 6×6 | 3×3 | 1 | 6×6 |
+| 8×8 | 3×3 | 1 | 8×8 |
+
+> 💡 `padding=1` with a `3×3` filter = output size stays the same as input!
+
+---
+
+## 👣 Stride — How Big is Each Step?
+
+Stride = **how many pixels the filter moves** each time it slides.
+
+### Stride = 1 (default)
+Filter moves **1 pixel** at a time → slow, detailed, larger output
+
+        [ ][ ][ ] →
+        [ ][ ][ ] →
+        [ ][ ][ ] → ...
+
+### Stride = 2
+Filter **jumps 2 pixels** → faster, smaller output
+
+    [ ][ ][ ] →
+    [ ][ ][ ] →        ← skipped the middle!
+
+
+
+                Stride = 1                  Stride = 2
+        Input     6×6                         6×6
+        Filter    3×3                         3×3
+        Padding   1                           1
+        Output    6×6                         4×4  
+
+### Formula with Stride
+
+          Output = (Input - Filter + 2×Padding) / Stride + 1  
+| Input | Filter | Stride | Output |
+|---|---|---|---|
+| 6×6 | 3×3 | 1 | 4×4 |
+| 6×6 | 3×3 | 2 | 2×2 |
+| 8×8 | 3×3 | 2 | 3×3 |
+
+> 💡 Bigger stride = smaller output = less computation!
+
+---
+
+### 🧠 Padding vs Stride — Quick Summary
+
+| | Padding | Stride |
+|---|---|---|
+| What it does | Adds zeros around image | Controls filter jump size |
+| Effect on output | Keeps size same | Reduces size |
+| When to use | Want to preserve size | Want to downsample fast |
+| Default value | 0 or 1 | 1 |
+
+---
