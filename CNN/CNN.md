@@ -482,4 +482,4 @@ Takes the **minimum value** from each 2×2 window.
 
 
 
-![alt text](image-9.png)
+<img src="image-10.png" alt="alt text" width="200" height="200">
