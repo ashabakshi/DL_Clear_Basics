@@ -443,59 +443,15 @@ Takes the **maximum value** from each 2×2 window.
             8  1 | 2  5
             3  6 | 4  3
 
----
-### Why Max Pooling?
-- ✅ Keeps the **strongest** feature signal
-- ✅ Good for **detection** tasks (is the feature present?)
-- ✅ Reduces computation significantly
-- ✅ Adds **translation invariance** — if the feature moves slightly, max pool still catches it
+> max(1,3,2,9) = **9** | max(5,2,7,4) = **7**
 
----
-### 2. Average Pooling — Smooth Average
-
-Takes the **average value** of each 2×2 window.
-
-Input 4×4:          Output 2×2 (Average):
-1  3 | 5  2          3.75  4
-2  9 | 7  4    →     4.25  3.25
-8  1 | 2  5
-3  6 | 4  3
-
----
-### 🧠 Pooling vs. Convolution — Key Differences
-
-| Feature | Convolution | Pooling |
-|---|---|---|
-| **Purpose** | Extract features | Downsample / reduce size |
-| **Operates on** | Original image/feature map | Feature map only |
-| **Uses filters** | Yes (trainable) | No (fixed operation) |
-| **Weights** | Learned during training | None |
-| **Output** | Feature map (same/smaller) | Smaller feature map |
-| **Translation invariance** | Some | More (especially max pool) |
-| **Computational cost** | High | Very low |
+**Use when:** detecting strong/dominant features like edges, textures, object parts.
+Most commonly used in CNNs. ✅
 
 ---
 
-### 🎯 When to Use Max vs Average Pooling
+#### 2. 🟡 Average Pooling — Take the Mean
 
-| Type | Best For | Example |
-|---|---|---|
-| **Max Pooling** | **Classification tasks**, object detection | ImageNet, facial recognition |
-| **Average Pooling** | **Fine-grained tasks**, preserving overall information | Medical imaging, texture analysis |
+Takes the **average** of all values in the window.
 
-> 💡 **Max pooling is used ~90% of the time in modern CNNs** because it preserves feature presence best!
-
----
-
-### 🧠 Complete CNN Architecture Summary
-
-**Convolutional → Activation → Pooling → Convolution → Activation → Pooling → Flatten → Dense → Output**
-
-1. **Conv Layer**: Extracts features using filters
-2. **ReLU**: Adds non-linearity
-3. **Pooling**: Reduces dimensions
-4. **Repeat** 2-3 times (deeper layers = more complex features)
-5. **Flatten**: Convert to 1D vector
-6. **Dense Layers**: Make predictions
-7. **Output Layer**: Final probability distribution
-
+![alt text](image-9.png)
