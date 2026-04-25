@@ -454,18 +454,18 @@ Most commonly used in CNNs. ✅
 
 Takes the **average** of all values in the window.
 
-Input:          Output:
-1  3 | 5  2      3.75   4.5
-2  9 | 7  4  →   4.5    3.5
-8  1 | 2  5
-3  6 | 4  3
+                        Input:          Output:
+                        1  3 | 5  2      3.75   4.5
+                        2  9 | 7  4  →   4.5    3.5
+                        8  1 | 2  5
+                        3  6 | 4  3
 
 
-Input:          Output:
-1  3 | 5  2      3.75   4.5
-2  9 | 7  4  →   4.5    3.5
-8  1 | 2  5
-3  6 | 4  3
+                        Input:          Output:
+                        1  3 | 5  2      3.75   4.5
+                        2  9 | 7  4  →   4.5    3.5
+                        8  1 | 2  5
+                        3  6 | 4  3
 
 > avg(1,3,2,9) = **3.75** | avg(5,2,7,4) = **4.5**
 
