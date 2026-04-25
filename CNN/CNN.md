@@ -454,4 +454,13 @@ Most commonly used in CNNs. ✅
 
 Takes the **average** of all values in the window.
 
+Input:          Output:
+1  3 | 5  2      3.75   4.5
+2  9 | 7  4  →   4.5    3.5
+8  1 | 2  5
+3  6 | 4  3
+
+
+
+
 ![alt text](image-9.png)
