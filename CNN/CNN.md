@@ -479,7 +479,6 @@ Good for preserving background info, sometimes used in early layers.
 Takes the **minimum value** from each 2×2 window.
 
 
+<img src="image-9.png" alt="cnn_Pooling" width="600"/>
 
 
-
-<img src="image-10.png" alt="pooling" width="200" height="200">
