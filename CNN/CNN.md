@@ -467,6 +467,16 @@ Input:          Output:
 8  1 | 2  5
 3  6 | 4  3
 
+> avg(1,3,2,9) = **3.75** | avg(5,2,7,4) = **4.5**
+
+**Use when:** you want smoother, less noisy representations.
+Good for preserving background info, sometimes used in early layers.
+
+---
+
+#### 3. 🔵 Min Pooling — Pick the Smallest
+
+Takes the **minimum value** from each 2×2 window.
 
 
 
