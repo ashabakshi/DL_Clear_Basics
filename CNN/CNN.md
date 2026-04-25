@@ -482,4 +482,4 @@ Takes the **minimum value** from each 2×2 window.
 
 
 
-<img src="image-10.png" alt="alt text" width="200" height="200">
+<img src="image-10.png" alt="pooling" width="200" height="200">
