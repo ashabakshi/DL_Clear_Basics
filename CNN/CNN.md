@@ -502,6 +502,7 @@ Rare in practice — mostly used in special cases.
 | Min Pooling | Smallest value | Dark features, anomaly detection | Rare |
 
 ---
+### 🧠 Formula
 
 
 
