@@ -504,6 +504,9 @@ Rare in practice — mostly used in special cases.
 ---
 ### 🧠 Formula
 
+Output Size = (Input - Pool Size) / Stride + 1
+Example: (4 - 2) / 2 + 1 = 2  →  2×2 output ✅
+
 
 
 
