@@ -478,6 +478,20 @@ Good for preserving background info, sometimes used in early layers.
 
 Takes the **minimum value** from each 2×2 window.
 
+                Input:          Output:
+                1  3 | 5  2      1   2
+                2  9 | 7  4  →   1   2
+                8  1 | 2  5
+                3  6 | 4  3
+
+min(1,3,2,9) = **1** | min(5,2,7,4) = **2**
+
+
+
+
+
+
+
 
 <img src="image-9.png" alt="cnn_Pooling" width="600"/>
 
