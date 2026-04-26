@@ -493,6 +493,16 @@ Rare in practice — mostly used in special cases.
 
 ---
 
+### 📊 All Three — Quick Comparison
+
+| Type | Operation | Best For | Common? |
+|---|---|---|---|
+| Max Pooling | Largest value | Edges, textures, dominant features | ✅ Most common |
+| Avg Pooling | Mean of values | Smooth representations, background | Moderate |
+| Min Pooling | Smallest value | Dark features, anomaly detection | Rare |
+
+---
+
 
 
 
