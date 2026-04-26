@@ -486,7 +486,12 @@ Takes the **minimum value** from each 2×2 window.
 
 min(1,3,2,9) = **1** | min(5,2,7,4) = **2**
 
+> min(1,3,2,9) = **1** | min(5,2,7,4) = **2**
 
+**Use when:** highlighting dark features, anomalies, or background suppression.
+Rare in practice — mostly used in special cases.
+
+---
 
 
 
