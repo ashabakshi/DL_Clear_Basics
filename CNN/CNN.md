@@ -446,6 +446,9 @@ Takes the **maximum value** from each 2×2 window.
 > max(1,3,2,9) = **9** | max(5,2,7,4) = **7**
 
 **Use when:** detecting strong/dominant features like edges, textures, object parts.
+
+
+
 Most commonly used in CNNs. ✅
 
 ---
