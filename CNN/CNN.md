@@ -57,7 +57,7 @@ patches and slowly build up the full picture.
 
 ---
 
-## 🏗️ CNN Architecture — How It Works?
+## 🏗️ CNN Architecture — How It Works??
 
 <img src="image-3.png" alt="CNN Architecture Overview" width="600"/>
 
