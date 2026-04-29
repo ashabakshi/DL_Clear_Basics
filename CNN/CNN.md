@@ -554,7 +554,11 @@ No math, no weights — just **reshaping** the data! 📦 → 📋
 ### 🧠 Analogy
 
 > Conv + Pooling layers = **detective collecting clues** (3D, spatial)
+
+
 > Flatten = **writing all clues in one list** (1D, sequential)
+
+
 > FC Layer = **boss reads the list and makes decision** 🎯
 
 ---
