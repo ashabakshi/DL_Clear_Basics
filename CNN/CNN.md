@@ -537,3 +537,10 @@ So **Flatten** simply unrolls the entire 3D structure into one long list of numb
         4 × 4 × 3  →  Flatten  →  48 neurons (1D vector)
         (just multiply all dimensions: 4 × 4 × 3 = 48)
 
+
+
+No math, no weights — just **reshaping** the data! 📦 → 📋
+
+---
+
+### Real Example
