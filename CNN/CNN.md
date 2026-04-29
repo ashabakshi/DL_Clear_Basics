@@ -549,4 +549,23 @@ No math, no weights — just **reshaping** the data! 📦 → 📋
                         After Conv+Pool: 7 × 7 × 512
                         After Flatten:   7 × 7 × 512  =  25,088 neurons  →  goes into FC layer
 
+---
 
+### 🧠 Analogy
+
+> Conv + Pooling layers = **detective collecting clues** (3D, spatial)
+> Flatten = **writing all clues in one list** (1D, sequential)
+> FC Layer = **boss reads the list and makes decision** 🎯
+
+---
+
+### 📊 Key Points
+
+| | Detail |
+|---|---|
+| Input | 3D feature map (H × W × Filters) |
+| Output | 1D vector (H × W × Filters values) |
+| Parameters | None — just reshaping! |
+| Purpose | Bridge between Conv layers and FC layer |
+
+---
