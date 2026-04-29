@@ -523,3 +523,13 @@ Example: (4 - 2) / 2 + 1 = 2  →  2×2 output ✅
 ### What is Flatten?
 
 After all the Conv and Pooling layers, the output is a **3D feature map**:
+
+        Example: 4 × 4 × 3  (Height × Width × Filters)
+
+But the Fully Connected (ANN) layer needs a **1D vector** as input — it cannot read 3D data!
+
+So **Flatten** simply unrolls the entire 3D structure into one long list of numbers.
+
+---
+
+### How It Works?
