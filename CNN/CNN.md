@@ -544,3 +544,9 @@ No math, no weights — just **reshaping** the data! 📦 → 📋
 ---
 
 ### Real Example
+
+                        Input image:    224 × 224 × 3  (RGB image)
+                        After Conv+Pool: 7 × 7 × 512
+                        After Flatten:   7 × 7 × 512  =  25,088 neurons  →  goes into FC layer
+
+
