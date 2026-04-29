@@ -515,6 +515,6 @@ Example: (4 - 2) / 2 + 1 = 2  →  2×2 output ✅
 
 
 
-<img src="image-9.png" alt="cnn_Pooling" width="400"/>
+<img src="image-9.png" alt="cnn_Pooling" width="600"/>
 
 
