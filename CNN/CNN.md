@@ -514,7 +514,12 @@ Example: (4 - 2) / 2 + 1 = 2  →  2×2 output ✅
 ---
 
 
-
 <img src="image-9.png" alt="cnn_Pooling" width="600"/>
 
+---
 
+## 📐 Flatten Layer — 3D to 1D
+
+### What is Flatten?
+
+After all the Conv and Pooling layers, the output is a **3D feature map**:
