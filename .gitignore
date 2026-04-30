@@ -1,7 +1,0 @@
-# Data files
-*.csv
-
-# Python
-__pycache__/
-*.pyc
-.ipynb_checkpoints/
