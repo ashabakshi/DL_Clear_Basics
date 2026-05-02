@@ -83,7 +83,7 @@ The same cell is **reused at every step** — that's why it's called *recurrent.
 
 ---
 
-```
+
 # RNN Architecture
 
 ## The Big Picture
