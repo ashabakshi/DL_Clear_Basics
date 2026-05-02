@@ -83,8 +83,3 @@ The same cell is **reused at every step** — that's why it's called *recurrent.
 
 ---
 
-*Next topics: Backpropagation Through Time (BPTT) → Vanishing Gradient Problem → LSTM → GRU*
-
----
-
-Yeh copy kar le directly! Aur agla topic bata jab ready ho. 🙌
