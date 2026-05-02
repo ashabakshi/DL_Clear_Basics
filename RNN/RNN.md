@@ -222,5 +222,7 @@ Each cell is the **same cell reused** — just drawn multiple times for clarity.
 
 ---
 
-    ![alt text](image-1.png)
+![alt text](image-1.png)
+
+
 
