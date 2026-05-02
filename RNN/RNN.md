@@ -139,13 +139,13 @@ Keras expects RNN input in this format:
 
 | Term | Meaning | Example |
 |---|---|---|
-| batch_size | Number of samples per batch | 32 sentences |
+| batch_size | Number of samples per batch | 3 sentences |
 | time_steps | Length of sequence (words per sentence) | 3 words |
 | input_features | Size of each input vector | 5 (vocab size) |
 
 So for our example:
 ```
-Input shape = (32, 3, 5)
+Input shape = (3, 3, 5)
 ```
 
 ---
