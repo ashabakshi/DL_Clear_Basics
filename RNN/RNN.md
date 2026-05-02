@@ -83,3 +83,158 @@ The same cell is **reused at every step** — that's why it's called *recurrent.
 
 ---
 
+```
+# RNN Architecture
+
+## The Big Picture
+
+Think of RNN architecture like a **chain of identical cells** — each cell reads one piece of the sequence, updates its memory, and passes that memory to the next cell.
+
+---
+
+## Single RNN Cell — What's Inside?
+
+One RNN cell takes:
+- **x_t** → current input
+- **h_(t-1)** → hidden state from previous step
+
+And produces:
+- **h_t** → new hidden state (updated memory)
+- **y_t** → output (optional at each step)
+
+```
+         h_(t-1)
+            ↓
+x_t →  [ RNN Cell ]  → h_t → (next cell)
+                ↓
+               y_t
+```
+
+---
+
+## The Math Inside One Cell
+
+```
+h_t = tanh(W_h · h_(t-1) + W_x · x_t + b)
+y_t = W_y · h_t + b_y
+```
+
+- **W_h** → weight for previous hidden state
+- **W_x** → weight for current input
+- **b** → bias
+- **tanh** → squishes output between -1 and +1
+
+> Same weights (W_h, W_x) are **shared across all time steps** — this is what makes RNN efficient.
+
+---
+
+## Unrolled View (Full Sequence)
+
+When we "unroll" an RNN across time, it looks like this:
+
+```
+x1 → [Cell] → h1 → [Cell] → h2 → [Cell] → h3
+       ↓               ↓               ↓
+      y1              y2              y3
+```
+
+Each cell is the **same cell reused** — just drawn multiple times for clarity.
+
+---
+
+## Types of RNN Architecture
+
+Depending on input/output structure, RNN has 5 variants:
+
+### 1. One to One
+```
+x → [RNN] → y
+```
+- Normal neural network, no sequence
+- Example: Image classification
+
+---
+
+### 2. One to Many
+```
+x → [RNN] → y1 → y2 → y3
+```
+- One input, sequence output
+- Example: **Image captioning** (one image → sentence)
+
+---
+
+### 3. Many to One
+```
+x1 → x2 → x3 → [RNN] → y
+```
+- Sequence input, one output
+- Example: **Sentiment analysis** (sentence → positive/negative)
+
+---
+
+### 4. Many to Many (Same Length)
+```
+x1 → x2 → x3 → [RNN] → y1 → y2 → y3
+```
+- Sequence in, sequence out (same size)
+- Example: **POS tagging** (each word → its tag)
+
+---
+
+### 5. Many to Many (Different Length)
+```
+x1 → x2 → [Encoder] → [Decoder] → y1 → y2 → y3
+```
+- Sequence in, different length sequence out
+- Example: **Machine translation** (English → Hindi)
+
+---
+
+## Layers in RNN
+
+### Single Layer RNN
+```
+Input → [RNN Layer] → Output
+```
+
+### Stacked / Deep RNN
+```
+Input → [RNN Layer 1] → [RNN Layer 2] → [RNN Layer 3] → Output
+```
+- Multiple RNN layers stacked on top
+- Learns more complex patterns
+- Used in advanced NLP tasks
+
+### Bidirectional RNN
+```
+→ [Forward RNN]  →
+Input                   → Combined Output
+← [Backward RNN] ←
+```
+- Reads sequence both **left to right** and **right to left**
+- Useful when future context also matters
+- Example: **Named Entity Recognition**
+
+---
+
+## Summary Table
+
+| Architecture | Input | Output | Example |
+|---|---|---|---|
+| One to One | Single | Single | Image classification |
+| One to Many | Single | Sequence | Image captioning |
+| Many to One | Sequence | Single | Sentiment analysis |
+| Many to Many (same) | Sequence | Sequence | POS tagging |
+| Many to Many (diff) | Sequence | Sequence | Translation |
+| Stacked RNN | Sequence | Sequence | Complex NLP |
+| Bidirectional RNN | Sequence | Sequence | NER, QA |
+
+---
+
+## One Line Summary
+
+> RNN architecture is a **chain of reusable cells**, each taking current input + past memory, producing updated memory — and depending on the task, it can be one-to-one, one-to-many, many-to-one, or many-to-many.
+
+---
+
