@@ -29,6 +29,10 @@ A normal neural network (like a plain ANN or CNN) doesn't do this. Every input i
 | No memory | Has memory (hidden state) |
 | Input → Output | Input + Past state → Output |
 | Good for images, tabular data | Good for sequences, time series, text |
+|Text input size may vary |Text input size must be fixed in a batch |
+|Computational Power Required less |Computational Power Required more|
+|Semantic meaning is not preserved well |Semantic meaning is preserved well|
+
 
 ---
 
@@ -85,22 +89,76 @@ The same cell is **reused at every step** — that's why it's called *recurrent.
 
 
 # RNN Architecture
+![alt text](image.png)
+---
 
-## The Big Picture
+# RNN Architecture
 
-Think of RNN architecture like a **chain of identical cells** — each cell reads one piece of the sequence, updates its memory, and passes that memory to the next cell.
+---
+
+## How Data is Fed into RNN
+
+Before feeding text into an RNN, we need to convert words into numbers.  
+RNN cannot understand raw text — it only understands numbers.
+
+### Example Dataset
+
+| Comments | Sentiment |
+|---|---|
+| You are good | 1 |
+| You are bad | 0 |
+| You are not good | 0 |
+
+---
+
+## Vocabulary & One-Hot Encoding
+
+We have **5 unique words** → vocabulary size = 5
+
+Each word is represented as a vector of size 5:
+
+```
+you  = [1, 0, 0, 0, 0]
+are  = [0, 1, 0, 0, 0]
+good = [0, 0, 1, 0, 0]
+bad  = [0, 0, 0, 1, 0]
+not  = [0, 0, 0, 0, 1]
+```
+
+> This is called **One-Hot Encoding** — only one position is "hot" (1), rest are 0.
+
+---
+
+## Keras Input Shape
+
+Keras expects RNN input in this format:
+
+```
+(batch_size, time_steps, input_features)
+```
+
+| Term | Meaning | Example |
+|---|---|---|
+| batch_size | Number of samples per batch | 32 sentences |
+| time_steps | Length of sequence (words per sentence) | 3 words |
+| input_features | Size of each input vector | 5 (vocab size) |
+
+So for our example:
+```
+Input shape = (32, 3, 5)
+```
 
 ---
 
 ## Single RNN Cell — What's Inside?
 
 One RNN cell takes:
-- **x_t** → current input
-- **h_(t-1)** → hidden state from previous step
+- **x_t** → current input (current word vector)
+- **h_(t-1)** → hidden state from previous step (memory)
 
 And produces:
 - **h_t** → new hidden state (updated memory)
-- **y_t** → output (optional at each step)
+- **y_t** → output
 
 ```
          h_(t-1)
@@ -110,27 +168,18 @@ x_t →  [ RNN Cell ]  → h_t → (next cell)
                y_t
 ```
 
----
-
-## The Math Inside One Cell
+### The Math
 
 ```
 h_t = tanh(W_h · h_(t-1) + W_x · x_t + b)
 y_t = W_y · h_t + b_y
 ```
 
-- **W_h** → weight for previous hidden state
-- **W_x** → weight for current input
-- **b** → bias
-- **tanh** → squishes output between -1 and +1
-
-> Same weights (W_h, W_x) are **shared across all time steps** — this is what makes RNN efficient.
+> Same weights **(W_h, W_x)** are shared across all time steps.
 
 ---
 
 ## Unrolled View (Full Sequence)
-
-When we "unroll" an RNN across time, it looks like this:
 
 ```
 x1 → [Cell] → h1 → [Cell] → h2 → [Cell] → h3
@@ -144,82 +193,6 @@ Each cell is the **same cell reused** — just drawn multiple times for clarity.
 
 ## Types of RNN Architecture
 
-Depending on input/output structure, RNN has 5 variants:
-
-### 1. One to One
-```
-x → [RNN] → y
-```
-- Normal neural network, no sequence
-- Example: Image classification
-
----
-
-### 2. One to Many
-```
-x → [RNN] → y1 → y2 → y3
-```
-- One input, sequence output
-- Example: **Image captioning** (one image → sentence)
-
----
-
-### 3. Many to One
-```
-x1 → x2 → x3 → [RNN] → y
-```
-- Sequence input, one output
-- Example: **Sentiment analysis** (sentence → positive/negative)
-
----
-
-### 4. Many to Many (Same Length)
-```
-x1 → x2 → x3 → [RNN] → y1 → y2 → y3
-```
-- Sequence in, sequence out (same size)
-- Example: **POS tagging** (each word → its tag)
-
----
-
-### 5. Many to Many (Different Length)
-```
-x1 → x2 → [Encoder] → [Decoder] → y1 → y2 → y3
-```
-- Sequence in, different length sequence out
-- Example: **Machine translation** (English → Hindi)
-
----
-
-## Layers in RNN
-
-### Single Layer RNN
-```
-Input → [RNN Layer] → Output
-```
-
-### Stacked / Deep RNN
-```
-Input → [RNN Layer 1] → [RNN Layer 2] → [RNN Layer 3] → Output
-```
-- Multiple RNN layers stacked on top
-- Learns more complex patterns
-- Used in advanced NLP tasks
-
-### Bidirectional RNN
-```
-→ [Forward RNN]  →
-Input                   → Combined Output
-← [Backward RNN] ←
-```
-- Reads sequence both **left to right** and **right to left**
-- Useful when future context also matters
-- Example: **Named Entity Recognition**
-
----
-
-## Summary Table
-
 | Architecture | Input | Output | Example |
 |---|---|---|---|
 | One to One | Single | Single | Image classification |
@@ -232,9 +205,22 @@ Input                   → Combined Output
 
 ---
 
-## One Line Summary
+## Feed Forward vs RNN
 
-> RNN architecture is a **chain of reusable cells**, each taking current input + past memory, producing updated memory — and depending on the task, it can be one-to-one, one-to-many, many-to-one, or many-to-many.
+| Feed Forward | RNN |
+|---|---|
+| No memory | Has memory (hidden state) |
+| Input → Output | Input + Past state → Output |
+| Fixed input size | Variable sequence length |
+| Good for tabular/image | Good for text/time series |
 
 ---
+
+## One Line Summary
+
+> RNN feeds sequences **step by step** — each step takes current input + past memory, updates the hidden state, and passes it forward.
+
+---
+
+    ![alt text](image-1.png)
 
