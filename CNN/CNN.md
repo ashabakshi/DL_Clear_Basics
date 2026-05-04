@@ -572,6 +572,8 @@ No math, no weights — just **reshaping** the data! 📦 → 📋
 | Parameters | None — just reshaping! |
 | Purpose | Bridge between Conv layers and FC layer |
 
+
+
 ---
 
 
