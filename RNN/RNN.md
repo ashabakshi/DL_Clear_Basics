@@ -158,11 +158,11 @@ Keras wants input in this exact format:
 | Term | What it means | Our Example |
 |---|---|---|
 | `batch_size` | How many sentences at once | 3 sentences |
-| `time_steps` | How many words per sentence | 3 words |
-| `input_features` | Size of each word vector | 5 (vocab size) |
+| `time_steps` | How many words per sentence | 4 words |
+| `input_features` | Size of each word vector | 6 (vocab size) |
 
 ```
-Input shape = (3, 3, 5)
+Input shape = (3, 4, 6)
 ```
 
 ---
@@ -215,6 +215,78 @@ h0 ►[Cell]► h1 ►[Cell]► h2 ►[Cell]► h3
 - For **sentiment analysis**, only `y3` (final output) is used
 
 ---
+## ⚡ Activation Function in RNN Hidden Layer
+
+Every RNN cell has an **activation function** inside the hidden layer.
+
+It is applied while calculating the new hidden state `h_t`.
+
+---
+
+### 🔁 The Formula (Recall)
+
+```
+h_t = activation( Wh · h_(t-1)  +  Wx · x_t  +  b )
+```
+
+The activation function **wraps the whole calculation** inside the hidden layer.
+
+---
+
+### ✅ Default Activation Function — `tanh`
+
+By default, RNN uses **tanh (Hyperbolic Tangent)** as its activation function.
+
+```
+tanh(x) = (eˣ - e⁻ˣ) / (eˣ + e⁻ˣ)
+```
+
+| Property | Value |
+|---|---|
+| Output range | **-1 to +1** |
+| Shape | S-shaped curve (like sigmoid) |
+| Default in Keras RNN | ✅ Yes |
+
+> 💡 tanh squishes any number into the range **-1 to +1** — this keeps the hidden state values controlled and prevents them from exploding.
+
+---
+
+### 🔁 Why tanh and not ReLU?
+
+| | tanh | ReLU |
+|---|---|---|
+| Output range | -1 to +1 | 0 to ∞ |
+| Centered at zero | ✅ Yes | ❌ No |
+| Gradient vanishing | Mild | Less (but explodes in RNN) |
+| Default in RNN | ✅ Yes | ❌ Not preferred |
+
+> ReLU can cause **exploding gradients** in RNN because hidden states get passed repeatedly — tanh keeps values bounded.
+
+---
+
+### 🧪 In Keras
+
+```python
+from tensorflow.keras.layers import SimpleRNN
+
+# default activation = tanh (you don't need to specify)
+model.add(SimpleRNN(units=64))
+
+# same as writing:
+model.add(SimpleRNN(units=64, activation='tanh'))
+```
+
+---
+
+### 💡 One-Line Summary
+
+> RNN hidden layer uses **tanh by default** — it squishes the hidden state between -1 and +1, keeping memory values stable across time steps.
+
+
+---
+
+---
+
 
 ## 🗂️ Types of RNN
 
