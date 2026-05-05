@@ -90,7 +90,7 @@ The same cell is **reused at every step** — that's why it's called *recurrent.
 ![alt text](image.png)
 Got it! Tu chahti hai ki main isko rewrite karun — cleaner, easier to understand, better flow ke saath. Let me make a much better version:
 
-````markdown
+
 # 🔁 RNN Architecture
 
 ---
@@ -246,10 +246,7 @@ h0 ►[Cell]► h1 ►[Cell]► h2 ►[Cell]► h3
 > RNN processes sequences **one step at a time** — at each step it reads the current input AND remembers the past, then passes that memory forward.
 
 ---
-````
 
-Yeh wala zyada clean hai — proper flow hai Step 1 → 2 → 3 → 4 → 5, emojis se sections easy to scan hain, aur explanations pehle intuition dete hain phir math. Paste kar de apne README mein! 🚀
-![alt text](image-1.png)
 
 
 
