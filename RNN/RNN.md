@@ -408,7 +408,7 @@ Imagine you're packing a bag for a trip:
 - **Output Gate** → "What do I need *right now* from this bag?" 🎒
 
 ---
-Let's go **deep into the 3 gates** of LSTM — with full intuition first, then math, then code! 🔥
+Let's go **deep into the 3 gates** of LSTM 🔥:-
 
 ---
 
@@ -545,3 +545,131 @@ x, h_prev
 | Output | Sigmoid | Hidden state | What to say now |
 
 ---
+Sure! Here's the **full GRU lesson** — clean, in English only 🔥
+
+---
+
+## What is GRU?
+
+GRU stands for **Gated Recurrent Unit**, introduced in **2014** as a simpler and faster alternative to LSTM.
+
+> Same goal as LSTM — learn from sequential data and remember long-term patterns.
+> But with **fewer gates, fewer parameters, and faster training.**
+
+---
+
+## LSTM vs GRU — Key Difference
+
+| | LSTM | GRU |
+|---|---|---|
+| Gates | 3 (Forget, Input, Output) | 2 (Reset, Update) |
+| States | 2 (Cell state + Hidden state) | 1 (Only Hidden state) |
+| Parameters | More | Less |
+| Speed | Slower | Faster |
+
+> GRU **merged** the cell state and hidden state into one — much simpler!
+
+---
+
+## GRU has only 2 Gates
+
+### Gate 1 — Reset Gate 🔄
+**Question it asks:** *"How much of the past should I ignore?"*
+
+```
+r = sigmoid(W_r · [h_prev, x] + b_r)
+```
+
+- **r = 0** → completely ignore the past (fresh start)
+- **r = 1** → keep all past information
+
+**Analogy:** A new topic enters the conversation. The reset gate says — *"Forget what was said before, start fresh."*
+
+---
+
+### Gate 2 — Update Gate ⚡
+**Question it asks:** *"How much old memory to keep vs new info to add?"*
+
+```
+z = sigmoid(W_z · [h_prev, x] + b_z)
+```
+
+- **z = 1** → keep old hidden state (barely update)
+- **z = 0** → fully take in new information
+
+> The update gate does the job of **both the forget gate and input gate** from LSTM — combined into one! 🤯
+
+**Analogy:** You are updating a running document. The update gate decides — *"How much of the old content stays, and how much new content gets added."*
+
+---
+
+## Full GRU Math — Step by Step
+
+```
+Step 1: Reset Gate
+r = sigmoid(W_r · [h_prev, x] + b_r)
+
+Step 2: Update Gate
+z = sigmoid(W_z · [h_prev, x] + b_z)
+
+Step 3: Candidate Hidden State
+h̃ = tanh(W_h · [r * h_prev, x] + b_h)
+         ↑
+     reset gate controls how much
+     past is used for the candidate
+
+Step 4: Final Hidden State
+h = (1 - z) * h̃  +  z * h_prev
+     ↑                  ↑
+  new info           old memory
+```
+
+> That last line is the key — **z blends old memory and new information.** No separate cell state needed.
+
+---
+
+## Visual Flow
+
+```
+x, h_prev
+    │
+    ├──→ Update Gate (z) ──────────────────────────────┐
+    │                                                   │
+    ├──→ Reset Gate (r) ──→ r * h_prev ──┐             │
+    │                                     ↓             ↓
+    │                               Candidate (h̃)    blend
+    │                               tanh(W·[r*h, x])   │
+    │                                     │             │
+    └─────────────────────────────────────↓─────────────↓
+                              h = (1-z)*h̃ + z*h_prev
+```
+
+
+
+> Just swap `LSTM` with `GRU` — same API, simpler model. ✅
+
+---
+
+## When to Use GRU vs LSTM?
+
+| Situation | Use |
+|---|---|
+| Small dataset | **GRU** |
+| Less compute / fast training needed | **GRU** |
+| Large, complex sequences | **LSTM** |
+| NLP tasks (translation, summarization) | **LSTM** |
+| Time series (stock prices, sensor data) | **GRU** often wins |
+
+---
+
+## Final Summary
+
+```
+LSTM = 3 gates + 2 states = powerful but heavier
+GRU  = 2 gates + 1 state  = simpler but nearly as good
+```
+
+> In practice — **try both and compare results!** 🔥
+
+---
+
