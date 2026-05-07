@@ -549,7 +549,9 @@ Sure! Here's the **full GRU lesson** — clean, in English only 🔥
 
 ---
 
-## What is GRU?
+# What is GRU?
+
+![alt text](image-7.png)
 
 GRU stands for **Gated Recurrent Unit**, introduced in **2014** as a simpler and faster alternative to LSTM.
 
