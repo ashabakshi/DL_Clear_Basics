@@ -549,7 +549,7 @@ Sure! Here's the **full GRU lesson** — clean, in English only 🔥
 
 ---
 
-# What is GRU?
+# What is GRU??
 
 ![alt text](image-7.png)
 
