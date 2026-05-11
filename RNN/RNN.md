@@ -544,8 +544,7 @@ x, h_prev
 | Input | Sigmoid + Tanh | Cell state | Write new memory |
 | Output | Sigmoid | Hidden state | What to say now |
 
----
-Sure! Here's the **full GRU lesson** — clean, in English only 🔥
+
 
 ---
 
