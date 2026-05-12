@@ -552,7 +552,7 @@ x, h_prev
 
 ![alt text](image-7.png)
 
-GRU stands for **Gated Recurrent Unit**, introduced in **2014** as a simpler and faster alternative to LSTM.
+GRU stands for **Gated Recurrent Unit**, introduced in **2014** as a simpler and faster alternative to LSTM
 
 > Same goal as LSTM — learn from sequential data and remember long-term patterns.
 > But with **fewer gates, fewer parameters, and faster training.**
