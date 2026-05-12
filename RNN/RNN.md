@@ -584,7 +584,7 @@ r = sigmoid(W_r · [h_prev, x] + b_r)
 - **r = 0** → completely ignore the past (fresh start)
 - **r = 1** → keep all past information
 
-**Analogy:** A new topic enters the conversation. The reset gate says — *"Forget what was said before, start fresh."*
+**Analogy:** A new topic enters the conversation. The reset gate says — *"Forget what was said before, start fresh.."*
 
 ---
 
