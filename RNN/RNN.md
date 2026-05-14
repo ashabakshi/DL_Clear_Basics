@@ -588,7 +588,7 @@ r = sigmoid(W_r · [h_prev, x] + b_r)
 
 ---
 
-### Gate 2 — Update Gate ⚡
+### Gate 2 — Update Gate .⚡
 **Question it asks:** *"How much old memory to keep vs new info to add?"*
 
 ```
