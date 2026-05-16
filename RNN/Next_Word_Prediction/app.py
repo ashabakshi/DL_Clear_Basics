@@ -3,7 +3,7 @@ import numpy as np
 import pickle
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-import time
+
 
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(
@@ -559,7 +559,7 @@ st.markdown("""
 # ---------------- LOAD FILES (cached) ----------------
 @st.cache_resource
 def load_assets():
-    model = load_model("lstm_model.h5")
+    model = load_model("lstm_model.h5", compile=False)
     with open("tokenizer.pkl", "rb") as f:
         tokenizer = pickle.load(f)
     with open("max_len.pkl", "rb") as f:
@@ -569,6 +569,9 @@ def load_assets():
 model, tokenizer, max_len = load_assets()
 
 vocab_size = len(tokenizer.word_index) + 1
+
+# Fast reverse-lookup dictionary (index → word)
+index_to_word = {index: word for word, index in tokenizer.word_index.items()}
 
 # ---------------- HEADER ----------------
 st.markdown("""
@@ -592,31 +595,39 @@ if "predicted_words" not in st.session_state:
 # ---------------- PREDICTION FUNCTION ----------------
 def predict_next_words(text, top_n=5):
     """Predict top N next words with confidence scores."""
-    token_list = tokenizer.texts_to_sequences([text])[0]
-    token_list = pad_sequences(
-        [token_list],
-        maxlen=max_len - 1,
-        padding='pre'
-    )
-    predictions = model.predict(token_list, verbose=0)[0]
+    try:
+        token_list = tokenizer.texts_to_sequences([text])[0]
 
-    # Get top N predictions
-    top_indices = np.argsort(predictions)[-top_n:][::-1]
-    top_probs = predictions[top_indices]
+        # Handle empty / unrecognized input
+        if len(token_list) == 0:
+            return []
 
-    # Normalize to percentages
-    total = np.sum(top_probs)
-    if total > 0:
-        top_probs = top_probs / total * 100
+        token_list = pad_sequences(
+            [token_list],
+            maxlen=max_len - 1,
+            padding='pre'
+        )
+        predictions = model.predict(token_list, verbose=0)[0]
 
-    results = []
-    for idx, prob in zip(top_indices, top_probs):
-        for word, index in tokenizer.word_index.items():
-            if index == idx:
-                results.append((word, prob))
-                break
+        # Get top N predictions
+        top_indices = np.argsort(predictions)[-top_n:][::-1]
+        top_probs = predictions[top_indices]
 
-    return results
+        # Normalize to percentages
+        total = np.sum(top_probs)
+        if total > 0:
+            top_probs = top_probs / total * 100
+
+        results = []
+        for idx, prob in zip(top_indices, top_probs):
+            word = index_to_word.get(idx, "")
+            if word:
+                results.append((word, float(prob)))
+
+        return results
+    except Exception as e:
+        st.error(f"Prediction Error: {e}")
+        return []
 
 # ---------------- INPUT SECTION ----------------
 st.markdown("""
@@ -748,7 +759,7 @@ st.markdown("""
 <div class="footer">
     <div class="footer-name">Made by <span>Asha Bakshi</span></div>
     <div class="footer-links">
-        <a href="https://github.com/ashabakshi/DL_Clear_Basics/tree/main/RNN/Next_Word_Prediction" target="_blank">
+        <a href="https://github.com/ashabakshi/NextWord-LSTM" target="_blank">
             <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             GitHub
         </a>
