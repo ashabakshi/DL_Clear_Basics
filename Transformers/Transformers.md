@@ -121,3 +121,86 @@ Replaces recurrence entirely with **attention**.
 > Yes. CNN uses spatial filters patch by patch. Vision Transformer (ViT) treats image patches as tokens and applies attention — often outperforming CNNs on large datasets.
 
 ---
+
+
+## Encoder and Decoder Architecture
+
+**What is it used for?**
+
+Encoder-Decoder architecture is used for sequence-to-sequence tasks where input is one sequence and output is another sequence.
+
+Examples:
+- English → Hindi translation
+- Question → Answer
+- Document → Summary
+
+---
+
+**Encoder — "The Reader"**
+
+The encoder reads and understands the entire input sequence.
+
+- Takes input words one by one
+- At each step produces a hidden state
+- Final hidden state is called the **context vector**
+- Context vector = compressed summary of the entire input sentence
+
+```
+Input:  "How are you"
+         ↓    ↓    ↓
+        h1 → h2 → h3
+                   ↓
+             context vector
+```
+
+**Analogy:** You read a full English paragraph and store its meaning in your brain.
+
+---
+
+**Decoder — "The Writer"**
+
+The decoder generates the output sequence using the context vector.
+
+- Takes context vector as starting point
+- Generates output one word at a time
+- Each generated word becomes input for the next step
+
+```
+context vector
+      ↓
+   decoder → "कैसे"
+      ↓
+   decoder → "हो"
+      ↓
+   decoder → "आप"
+```
+
+**Analogy:** Using the meaning stored in your brain, you start writing the Hindi translation word by word.
+
+---
+
+**The Bottleneck Problem**
+
+The entire input sentence is compressed into one single fixed-size context vector.
+
+For long sentences this causes information loss — one vector cannot hold all the details.
+
+**Analogy:** Summarizing an entire book in just one sentence — you will definitely miss important things.
+
+This bottleneck is exactly why **Attention Mechanism** was invented.
+
+---
+
+**Interview Q&A**
+
+**Q: What is the role of the encoder in a Seq2Seq model?**
+> The encoder reads the input sequence step by step and compresses it into a fixed-size context vector that represents the meaning of the entire input.
+
+**Q: What is the bottleneck problem in basic Encoder-Decoder?**
+> The entire input is compressed into a single fixed-size context vector. For long sequences this causes information loss because one vector cannot capture all details.
+
+**Q: How does the decoder use the context vector?**
+> The decoder takes the context vector as its initial hidden state and generates the output sequence one token at a time, using its previous output as the next input.
+
+---
+
