@@ -40,3 +40,84 @@ It looks at the **entire sentence at once** — all words in parallel — and fi
 > A deep learning architecture that uses self-attention to process sequences in parallel, without recurrence.
 
 ---
+
+## Quick Recap: ANN vs CNN vs RNN vs Transformer
+
+---
+
+**ANN — Artificial Neural Network**
+
+The most basic neural network. Takes input → passes through hidden layers → gives output.
+
+- Works on: **tabular/structured data** (excel-type data)
+- Problem: No concept of order or spatial structure
+- Example: Predicting house price from features like size, location, rooms
+
+---
+
+**CNN — Convolutional Neural Network**
+
+Designed specifically for **spatial data** like images.
+
+- Looks at small patches of an image at a time (filters/kernels)
+- Detects edges → shapes → objects — layer by layer
+- Works on: **images, video**
+- Problem: No concept of sequence or time
+- Example: Cat vs dog image classifier
+
+---
+
+**RNN — Recurrent Neural Network**
+
+Designed for **sequential data** — remembers previous inputs using a hidden state.
+
+- Reads data **one step at a time** (word by word)
+- Has memory of past — but it fades over long sequences
+- Works on: **text, time series, speech**
+- Problem: Slow + forgets long-range context (vanishing gradient)
+- Example: Predicting next word in a sentence
+
+---
+
+**LSTM — Long Short-Term Memory**
+
+Improved version of RNN — has gates to control what to remember and what to forget.
+
+- Solves vanishing gradient problem **partially**
+- Still sequential — still slow
+- Example: Sentiment analysis, machine translation
+
+---
+
+**Transformer**
+
+Replaces recurrence entirely with **attention**.
+
+- Looks at entire sequence **at once** — fully parallel
+- No forgetting — every word attends to every other word
+- Works on: text, images, audio, code — anything
+- Example: GPT, BERT, Claude
+
+---
+
+**Quick Comparison Table:**
+
+| Model | Data Type | Parallel? | Long-range Memory? |
+|---|---|---|---|
+| ANN | Tabular | ✅ | ❌ |
+| CNN | Images | ✅ | ❌ |
+| RNN | Sequences | ❌ | ❌ (fades) |
+| LSTM | Sequences | ❌ | ✅ (partial) |
+| Transformer | Anything | ✅ | ✅ |
+
+---
+
+**Interview Q&A:**
+
+**Q: Why did Transformers replace RNNs?**
+> RNNs are sequential — slow to train and struggle with long-range dependencies. Transformers process all tokens in parallel using attention, making them faster and better at capturing long-range context.
+
+**Q: Can CNN and Transformer both handle images?**
+> Yes. CNN uses spatial filters patch by patch. Vision Transformer (ViT) treats image patches as tokens and applies attention — often outperforming CNNs on large datasets.
+
+---
