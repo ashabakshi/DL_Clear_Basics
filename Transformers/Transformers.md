@@ -159,11 +159,11 @@ Input:  "How are you"
 
 **Decoder — "The Writer"**
 
-The decoder generates the output sequence using the context vector.
+The decoder generates the output sequence using the context vector...
 
 - Takes context vector as starting point
 - Generates output one word at a time
-- Each generated word becomes input for the next step
+- Each generated word becomes input for the next steps
 
 ```
 context vector
@@ -187,7 +187,7 @@ For long sentences this causes information loss — one vector cannot hold all t
 
 **Analogy:** Summarizing an entire book in just one sentence — you will definitely miss important things.
 
-This bottleneck is exactly why **Attention Mechanism** was invented.
+This bottleneck is exactly why **Attention Mechanism** was invented..
 
 ---
 
