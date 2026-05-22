@@ -4,7 +4,7 @@
 
 ---
 
-**The problem before Transformers:**
+**The problem before Transformers:-**
 
 RNN and LSTM read data **word by word** — like reading a book one letter at a time and trying to remember everything. The further back a word was, the more it got "forgotten."
 
