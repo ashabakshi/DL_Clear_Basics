@@ -1,6 +1,6 @@
 # What is a Transformer?
 
-**One line:** Transformer is a deep learning architecture that processes sequences (text, audio, images) using **attention** instead of recurrence.
+**One line:** Transformer is a deep learning architecture that processes sequences (text, audio, images) using **attention** instead of recurrences.
 
 ---
 
@@ -12,7 +12,7 @@ Also — it was **slow** because everything was sequential. Word 2 had to wait f
 
 ---
 
-**What Transformer does differently:**
+**What Transformer does differently:-**
 
 It looks at the **entire sentence at once** — all words in parallel — and figures out which words are related to which.
 
