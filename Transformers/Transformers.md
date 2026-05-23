@@ -57,7 +57,7 @@ The most basic neural network. Takes input → passes through hidden layers → 
 
 **CNN — Convolutional Neural Network**
 
-Designed specifically for **spatial data** like images.
+Designed specifically for **spatial data** like imagess.
 
 - Looks at small patches of an image at a time (filters/kernels)
 - Detects edges → shapes → objects — layer by layer
