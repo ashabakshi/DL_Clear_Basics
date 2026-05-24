@@ -307,7 +307,7 @@ Attention gives the decoder that ability to highlight and focus.
 
 **Q: How is the context vector different in attention-based models?**
 > In basic Seq2Seq the context vector is fixed — the same for all output steps. In attention-based models the context vector is dynamic — recomputed at every decoder step as a weighted sum of all encoder hidden states..
-
+it will be helpful
 ---
 
 
