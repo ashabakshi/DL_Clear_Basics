@@ -1,6 +1,6 @@
 # Neuron & Perceptron
 
-🔹 What is a Neuron?
+🔹 What is a Neuron??
 
     Think of your brain — it has billions of biological neurons that receive signals, process them, and send output to other neurons.
     An artificial neuron mimics exactly this:
