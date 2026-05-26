@@ -6,7 +6,7 @@
 
 **The problem before Transformers are:-**
 
-RNN and LSTM reads data **word by word** — like reading a book one letter at a time and trying to remember everything. The further back a word was, the more it got "forgotten.."
+RNN and LSTM reads data **word by word** — like reading a book one letter at a time and trying to remember everything. The further back a word was, the more it got "forgotten..."
 
 Also — it was **slow** because everything was sequential. Word 2 had to wait for Word 1 to finish.
 
