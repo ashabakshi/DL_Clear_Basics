@@ -311,3 +311,141 @@ it will be helpful.
 ---
 
 
+
+---
+
+## Introduction to Transformer Architecture
+
+**What is a Transformer?**
+
+A Transformer is a deep learning architecture introduced in the 2017 paper **"Attention Is All You Need"** by Google researchers.
+
+It completely removes RNNs and LSTMs and relies entirely on **attention mechanisms** to process sequences.
+
+**One line definition:**
+> A Transformer is a neural network architecture that uses self-attention to process entire sequences in parallel — without any recurrence.
+
+---
+
+**Why was Transformer needed?**
+
+Even Seq2Seq with Attention had problems:
+
+- Still RNN based — still **sequential** processing
+- Cannot be parallelized — word 2 waits for word 1
+- Slow to train on large datasets
+- Struggles with very long sequences
+
+Transformer solved all of these at once.
+
+---
+
+**Core Idea — Self Attention**
+
+Previous attention was between encoder and decoder — decoder attended to encoder states.
+
+Transformer introduced **Self-Attention** — every word in the sequence attends to every other word **in the same sequence.**
+
+```
+Input: "The cat sat on the mat because it was tired"
+```
+
+When processing "it" — self-attention helps the model figure out that "it" refers to "cat" not "mat" by looking at all words together.
+
+---
+
+**High Level Architecture**
+
+A Transformer has two main parts:
+
+```
+Input Sequence
+      ↓
+  [ ENCODER ]  ← understands the input
+      ↓
+  [ DECODER ]  ← generates the output
+      ↓
+Output Sequence
+```
+
+Each encoder and decoder is made of **stacked layers** — not just one.
+
+---
+
+**What is inside each Encoder layer?**
+
+Every encoder layer has two sub-layers:
+
+1. **Multi-Head Self-Attention** — every word looks at every other word
+2. **Feed Forward Network** — processes each word independently
+
+```
+Input
+  ↓
+Multi-Head Self-Attention
+  ↓
+Feed Forward Network
+  ↓
+Output (passed to next encoder layer)
+```
+
+---
+
+**What is inside each Decoder layer?**
+
+Every decoder layer has three sub-layers:
+
+1. **Masked Multi-Head Self-Attention** — looks at previously generated output words only
+2. **Cross Attention** — attends to encoder output (like old Seq2Seq attention)
+3. **Feed Forward Network**
+
+---
+
+**Key Features of Transformer**
+
+| Feature | What it means |
+|---|---|
+| No recurrence | Processes all words at once — fully parallel |
+| Self-Attention | Every word relates to every other word |
+| Positional Encoding | Since no recurrence — order information is added manually |
+| Stacked layers | Multiple encoder and decoder layers stacked for depth |
+| Scalable | Works on text, images, audio, code — anything |
+
+---
+
+**Positional Encoding — Quick Note**
+
+Since Transformer processes all words at once — it does not know the order of words naturally.
+
+So before feeding input — **positional information is added** to each word embedding.
+
+> Analogy: Imagine shuffling a deck of cards — you number each card before shuffling so you always know the original order.
+
+---
+
+**Why Transformer beat everything**
+
+| | RNN | LSTM | Transformer |
+|---|---|---|---|
+| Parallel processing | ❌ | ❌ | ✅ |
+| Long-range memory | ❌ | ✅ partial | ✅ |
+| Training speed | Slow | Slow | Fast |
+| Scalability | Poor | Poor | Excellent |
+
+---
+
+**Interview Q&A**
+
+**Q: What is the key innovation of the Transformer architecture?**
+> Transformer replaced recurrence entirely with self-attention, allowing all tokens to be processed in parallel. This made training faster and enabled better long-range dependency capture compared to RNNs and LSTMs.
+
+**Q: What is the difference between attention in Seq2Seq and self-attention in Transformers?**
+> In Seq2Seq, attention is between the decoder and encoder hidden states — the decoder attends to input words. In Transformers, self-attention is within the same sequence — every word attends to every other word in the same sequence to understand context.
+
+**Q: Why is positional encoding needed in Transformers?**
+> Since Transformers process all tokens in parallel and have no recurrence, they have no built-in sense of word order. Positional encoding adds order information to each token embedding so the model knows the position of each word in the sequence.
+
+**Q: What are the two main components inside each encoder layer?**
+> Each encoder layer contains a Multi-Head Self-Attention sublayer followed by a Feed Forward Network, with residual connections and layer normalization applied after each.
+
+---
